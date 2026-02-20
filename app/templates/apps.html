@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block title %}Apps{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="page-header">
+        <p class="section-label">> App Gallery</p>
+        <h1>Our Apps</h1>
+        <p>Production-ready enterprise software. Live and running.</p>
+    </div>
+
+    <div class="filter-tabs">
+        {% for value, label in categories %}
+        <a href="{% if value == 'all' %}/apps{% else %}/apps?category={{ value }}{% endif %}"
+           class="filter-tab {% if selected_category == value %}active{% endif %}">{{ label }}</a>
+        {% endfor %}
+    </div>
+
+    <div class="grid-3">
+        {% for app in apps %}
+        <div class="card">
+            <div class="card-status">
+                <span class="dot {% if app.status == 'live' %}dot-live{% elif app.status == 'building' %}dot-building{% else %}dot-coming{% endif %}"></span>
+                {{ app.status | upper }}
+            </div>
+            <h3><a href="/apps/{{ app.slug }}" style="color: #fafafa;">{{ app.name }}</a></h3>
+            <p class="card-tagline">{{ app.tagline }}</p>
+            <div class="card-meta">
+                <span>{{ app.evolution_count }} evolutions</span>
+                {% if app.live_url %}
+                <a href="{{ app.live_url }}?utm_source=gigabox&utm_campaign=gallery" target="_blank">View Live &rarr;</a>
+                {% endif %}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<section class="section">
+    <div class="container">
+        <div class="cta-banner">
+            <h2>Need a custom app?</h2>
+            <p>$25K fixed. One week. You own the code.</p>
+            <a href="/contact" class="btn btn-primary">Get Started &rarr;</a>
+        </div>
+    </div>
+</section>
+{% endblock %}

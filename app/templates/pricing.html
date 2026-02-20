@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% block title %}Pricing{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="page-header" style="text-align: center;">
+        <p class="section-label">> Simple pricing</p>
+        <h1>No surprises</h1>
+        <p>Fixed price. You own everything. No recurring fees.</p>
+    </div>
+
+    <div class="pricing-grid">
+        <div class="price-card featured">
+            <h3>Standard</h3>
+            <div class="price-amount">$25,000</div>
+            <div class="price-period">fixed price</div>
+            <ul class="price-features">
+                <li>Custom-built application</li>
+                <li>Your domain, your brand</li>
+                <li>You own the source code</li>
+                <li>7-day delivery</li>
+                <li>12 weeks of support</li>
+                <li>Full REST API</li>
+                <li>No per-seat fees</li>
+                <li>PostgreSQL database included</li>
+            </ul>
+            <a href="/contact" class="btn btn-primary" style="width: 100%; justify-content: center;">Get Started &rarr;</a>
+        </div>
+
+        <div class="price-card">
+            <h3>Enterprise</h3>
+            <div class="price-amount">$250,000</div>
+            <div class="price-period">white-label platform</div>
+            <ul class="price-features">
+                <li>Everything in Standard</li>
+                <li>Full app suite (7+ apps)</li>
+                <li>White-label branding</li>
+                <li>Your GCP account, your data</li>
+                <li>Dedicated support</li>
+                <li>SLA with uptime guarantee</li>
+                <li>Custom integrations</li>
+                <li>Training and onboarding</li>
+            </ul>
+            <a href="/contact" class="btn btn-secondary" style="width: 100%; justify-content: center;">Contact Us &rarr;</a>
+        </div>
+    </div>
+
+    <div style="text-align: center; margin-top: 4rem; max-width: 600px; margin-left: auto; margin-right: auto;">
+        <p class="mono text-muted" style="font-size: 0.9rem; line-height: 1.8;">
+            NO SUBSCRIPTIONS. NO PER-SEAT PRICING.<br>
+            NO SURPRISE INVOICES. NO VENDOR LOCK-IN.<br>
+            <span style="color: #fafafa;">YOU OWN THE CODE. PERIOD.</span>
+        </p>
+    </div>
+</div>
+{% endblock %}

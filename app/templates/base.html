@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Gigabox{% endblock %} | AI Software Factory</title>
+    <meta name="description" content="{% block description %}We build enterprise software in one week. AI-powered apps. $25K fixed price. You own the code.{% endblock %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/" class="nav-logo">GIGABOX</a>
+            <div class="nav-links" id="navLinks">
+                <a href="/apps">Apps</a>
+                <a href="/pricing">Pricing</a>
+                <a href="/team">Team</a>
+                <a href="/blog">Blog</a>
+                <a href="/contact" class="nav-cta">Contact &rarr;</a>
+            </div>
+            <button class="nav-toggle" id="navToggle" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-inner">
+                <div class="footer-brand">
+                    <span class="footer-logo">GIGABOX</span>
+                    <p class="text-muted">AI Software Factory</p>
+                </div>
+                <div class="footer-links">
+                    <a href="/apps">Apps</a>
+                    <a href="/pricing">Pricing</a>
+                    <a href="/team">Team</a>
+                    <a href="/blog">Blog</a>
+                    <a href="/contact">Contact</a>
+                </div>
+                <div class="footer-contact">
+                    <a href="mailto:hello@gigabox.ai">hello@gigabox.ai</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Gigabox. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/static/main.js"></script>
+    {% block scripts %}{% endblock %}
+</body>
+</html>

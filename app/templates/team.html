@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block title %}Team{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="page-header">
+        <p class="section-label">> The Guild</p>
+        <h1>Our Team</h1>
+        <p>Engineers, operators, and builders.</p>
+    </div>
+
+    <div class="team-grid">
+        {% for member in members %}
+        <div class="team-card">
+            <div class="team-avatar">{{ member.name[0] }}</div>
+            <h3>{{ member.name }}</h3>
+            <p class="team-role">{{ member.role }}</p>
+            {% if member.bio %}
+            <p class="team-bio">{{ member.bio }}</p>
+            {% endif %}
+            {% if member.credentials %}
+            <p class="team-creds">{{ member.credentials }}</p>
+            {% endif %}
+            {% if member.linkedin_url %}
+            <a href="{{ member.linkedin_url }}" target="_blank" style="font-size: 0.85rem; margin-top: 0.5rem; display: inline-block;">LinkedIn &rarr;</a>
+            {% endif %}
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

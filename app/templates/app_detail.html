@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block title %}{{ app.name }}{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="app-header">
+        <div class="app-status">
+            <span class="dot {% if app.status == 'live' %}dot-live{% elif app.status == 'building' %}dot-building{% else %}dot-coming{% endif %}"></span>
+            {{ app.status | upper }} &middot; {{ app.evolution_count }} evolutions
+        </div>
+        <h1>{{ app.name }}</h1>
+        {% if app.replaces %}
+        <p class="app-replaces">Replaces: <span class="text-accent">{{ app.replaces }}</span></p>
+        {% endif %}
+        <p class="app-description">{{ app.description }}</p>
+
+        {% if app.live_url %}
+        <a href="{{ app.live_url }}?utm_source=gigabox&utm_campaign=detail" class="btn btn-primary" target="_blank">View Live App &rarr;</a>
+        {% endif %}
+    </div>
+
+    {% if features %}
+    <section class="section" style="padding-top: 2rem;">
+        <p class="section-label">> Features</p>
+        <ul class="features-list">
+            {% for feature in features %}
+            <li>{{ feature }}</li>
+            {% endfor %}
+        </ul>
+    </section>
+    {% endif %}
+
+    <section class="section">
+        <div class="cta-banner">
+            <p class="section-label">> Want this for your business?</p>
+            <h2>$25K fixed. One week. You own the code.</h2>
+            <p>Custom-built for your domain, your data, your brand.</p>
+            <a href="/contact" class="btn btn-primary">Get Started &rarr;</a>
+        </div>
+    </section>
+</div>
+{% endblock %}

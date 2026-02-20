@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block title %}{{ post.title }}{% endblock %}
+{% block description %}{{ post.subtitle or post.content[:160] }}{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="section" style="padding-top: 8rem;">
+        <div class="article">
+            <div class="article-header">
+                <a href="/blog" class="text-muted" style="font-size: 0.85rem; display: inline-block; margin-bottom: 1rem;">&larr; Back to Blog</a>
+                <h1>{{ post.title }}</h1>
+                {% if post.subtitle %}
+                <p style="color: #a3a3a3; font-size: 1.1rem; margin-top: 0.5rem;">{{ post.subtitle }}</p>
+                {% endif %}
+                <div class="article-meta" style="margin-top: 1rem;">
+                    <span>{{ post.author }}</span>
+                    {% if post.published_at %}
+                    <span>{{ post.published_at.strftime('%b %d, %Y') }}</span>
+                    {% endif %}
+                    <span>{{ post.read_time_minutes }} min read</span>
+                </div>
+            </div>
+            <div class="article-content">
+                {{ content_html | safe }}
+            </div>
+            {% if tags %}
+            <div class="article-tags">
+                {% for tag in tags %}
+                <span class="tag">{{ tag }}</span>
+                {% endfor %}
+            </div>
+            {% endif %}
+        </div>
+    </div>
+
+    <section class="section">
+        <div class="cta-banner">
+            <h2>Ready to build?</h2>
+            <p>$25K fixed. One week. You own the code.</p>
+            <a href="/contact" class="btn btn-primary">Get Started &rarr;</a>
+        </div>
+    </section>
+</div>
+{% endblock %}

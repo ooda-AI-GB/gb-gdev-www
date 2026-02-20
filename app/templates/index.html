@@ -1,0 +1,129 @@
+{% extends "base.html" %}
+{% block title %}Gigabox{% endblock %}
+
+{% block content %}
+<!-- HERO -->
+<section class="hero">
+    <div class="container">
+        <div class="hero-content">
+            <p class="section-label">> AI Software Factory</p>
+            <h1>We build enterprise software <span class="accent">in one week.</span></h1>
+            <p class="hero-sub">AI-powered apps. $25K fixed price. You own the code. No per-seat fees. No subscriptions. No surprises.</p>
+            <div class="hero-actions">
+                <a href="/apps" class="btn btn-primary">See the Apps &rarr;</a>
+                <a href="/contact" class="btn btn-secondary">Talk to Us</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- WHAT WE REPLACE -->
+<section class="section">
+    <div class="container">
+        <p class="section-label">> What we replace</p>
+        <h2>Enterprise SaaS, rebuilt from scratch</h2>
+        <div class="replaces-grid">
+            {% for app in apps[:4] %}
+            <div class="replace-card">
+                <p class="replaces-name">{{ app.replaces.split(',')[0] if app.replaces else '' }}</p>
+                <h3>{{ app.name }}</h3>
+                <p class="text-muted" style="font-size: 0.85rem; margin-bottom: 1rem;">{{ app.tagline }}</p>
+                <a href="{{ app.live_url }}?utm_source=gigabox&utm_campaign=gallery" class="btn btn-sm btn-secondary" target="_blank">Live &rarr;</a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="section section-alt">
+    <div class="container">
+        <p class="section-label">> How it works</p>
+        <h2>Four steps to production</h2>
+        <div class="steps-grid">
+            <div class="step">
+                <div class="step-number">01</div>
+                <h3>Describe</h3>
+                <p>Tell us what you need. Plain English. We'll handle the rest.</p>
+            </div>
+            <div class="step">
+                <div class="step-number">02</div>
+                <h3>Build</h3>
+                <p>Our AI factory generates production-ready code in days, not months.</p>
+            </div>
+            <div class="step">
+                <div class="step-number">03</div>
+                <h3>Deploy</h3>
+                <p>Your app goes live on your domain with full infrastructure.</p>
+            </div>
+            <div class="step">
+                <div class="step-number">04</div>
+                <h3>Own</h3>
+                <p>You get the code, the database, and 12 weeks of support.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- THE NUMBERS -->
+<section class="section">
+    <div class="container">
+        <p class="section-label">> The numbers</p>
+        <div class="stats-grid">
+            <div>
+                <div class="stat-number" data-target="{{ app_count }}">0</div>
+                <div class="stat-label">Live Apps</div>
+            </div>
+            <div>
+                <div class="stat-number">$25K</div>
+                <div class="stat-label">Fixed Price</div>
+            </div>
+            <div>
+                <div class="stat-number" data-target="7" data-suffix=" Day">0</div>
+                <div class="stat-label">Delivery</div>
+            </div>
+            <div>
+                <div class="stat-number">$0</div>
+                <div class="stat-label">Per Seat</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- BLOG -->
+{% if posts %}
+<section class="section section-alt">
+    <div class="container">
+        <p class="section-label">> The Build Log</p>
+        <h2>Recent from the blog</h2>
+        <div class="grid-3">
+            {% for post in posts %}
+            <div class="card blog-card">
+                <div class="blog-meta">
+                    <span class="blog-category">{{ post.category }}</span>
+                    <span>{{ post.read_time_minutes }} min read</span>
+                </div>
+                <h3><a href="/blog/{{ post.slug }}">{{ post.title }}</a></h3>
+                <p>{{ post.content[:150] }}...</p>
+            </div>
+            {% endfor %}
+        </div>
+        <div style="text-align: center; margin-top: 2rem;">
+            <a href="/blog" class="btn btn-secondary btn-sm">All Posts &rarr;</a>
+        </div>
+    </div>
+</section>
+{% endif %}
+
+<!-- CTA -->
+<section class="section">
+    <div class="container">
+        <div class="cta-banner">
+            <p class="section-label">> Ready?</p>
+            <h2>Let's build something</h2>
+            <p>$25K fixed. One week. You own everything.</p>
+            <a href="/contact" class="btn btn-primary">Get Started &rarr;</a>
+        </div>
+    </div>
+</section>
+{% endblock %}

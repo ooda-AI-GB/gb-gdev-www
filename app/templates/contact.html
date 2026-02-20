@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% block title %}Contact{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="page-header">
+        <p class="section-label">> Let's build something</p>
+        <h1>Contact</h1>
+        <p>Tell us what you need. We'll tell you when it's done.</p>
+    </div>
+
+    <div class="grid-2" style="align-items: start;">
+        <div class="contact-form">
+            {% if sent %}
+            <div class="sent-message">
+                > Message received. We'll be in touch.
+            </div>
+            {% endif %}
+
+            <form method="POST" action="/contact">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" required placeholder="Your name">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required placeholder="you@company.com">
+                </div>
+                <div class="form-group">
+                    <label for="company">Company <span class="text-muted">(optional)</span></label>
+                    <input type="text" id="company" name="company" placeholder="Your company">
+                </div>
+                <div class="form-group">
+                    <label for="message">What do you need?</label>
+                    <textarea id="message" name="message" required placeholder="Describe the software you need..."></textarea>
+                </div>
+                <!-- Honeypot -->
+                <div class="honeypot">
+                    <input type="text" name="website" tabindex="-1" autocomplete="off">
+                </div>
+                <button type="submit" class="btn btn-primary">Send &rarr;</button>
+            </form>
+        </div>
+
+        <div style="padding: 2rem;">
+            <p class="section-label">> Or reach out directly</p>
+            <p style="margin-bottom: 2rem;">
+                <a href="mailto:hello@gigabox.ai" style="font-size: 1.25rem; font-weight: 600;">hello@gigabox.ai</a>
+            </p>
+            <div style="border-left: 2px solid #262626; padding-left: 1.5rem;">
+                <p class="text-muted" style="margin-bottom: 1rem; font-size: 0.95rem;">
+                    Based in Los Angeles.<br>
+                    Working with clients worldwide.
+                </p>
+                <p class="text-muted" style="font-size: 0.95rem;">
+                    Typical response time: <span style="color: #fafafa;">under 24 hours</span>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

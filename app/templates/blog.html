@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block title %}Blog{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="page-header">
+        <p class="section-label">> The Build Log</p>
+        <h1>Blog</h1>
+        <p>Engineering notes, case studies, and lessons from the factory floor.</p>
+    </div>
+
+    {% if posts %}
+    <div class="grid-2">
+        {% for post in posts %}
+        <div class="card blog-card">
+            <div class="blog-meta">
+                <span class="blog-category">{{ post.category }}</span>
+                <span>{{ post.read_time_minutes }} min read</span>
+                {% if post.published_at %}
+                <span>{{ post.published_at.strftime('%b %d, %Y') }}</span>
+                {% endif %}
+            </div>
+            <h3><a href="/blog/{{ post.slug }}">{{ post.title }}</a></h3>
+            {% if post.subtitle %}
+            <p style="color: #d4d4d4; font-size: 0.95rem; margin-bottom: 0.5rem;">{{ post.subtitle }}</p>
+            {% endif %}
+            <p>{{ post.content[:200] }}...</p>
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <p class="text-muted" style="font-size: 1.1rem;">No posts yet. Check back soon.</p>
+    {% endif %}
+</div>
+{% endblock %}
