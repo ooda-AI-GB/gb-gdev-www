@@ -15,44 +15,43 @@
         <button class="toggle-switch" id="billingToggle" aria-label="Toggle annual billing">
             <span class="toggle-knob"></span>
         </button>
-        <span class="toggle-label" id="toggleAnnual">Annual <span class="save-badge">Save $4,800</span></span>
+        <span class="toggle-label" id="toggleAnnual">Annual</span>
     </div>
 
     <div class="pricing-grid">
-        <div class="price-card featured">
+        <div class="price-card featured" id="monthlyCard">
             <h3>Monthly</h3>
             <div class="price-amount" id="priceAmount">$2,000</div>
             <div class="price-period" id="pricePeriod">per month</div>
-            <ul class="price-features">
-                <li>All 6 production apps included</li>
+            <ul class="price-features" id="priceFeatures">
+                <li>All 6 production apps</li>
                 <li>CRM, Help Desk, Analytics, Social, Jobs, Cloud</li>
-                <li>Unlimited users — no per-seat fees</li>
-                <li>Full source code ownership</li>
-                <li>Complete REST API for every app</li>
+                <li>Full REST API for every app</li>
+                <li>AI orchestration via Claude Code</li>
+                <li>Unlimited users &mdash; no per-seat fees</li>
+                <li>PostgreSQL database per app</li>
                 <li>Custom domain and branding</li>
-                <li>PostgreSQL database included</li>
+                <li>Managed hosting on Google Cloud</li>
                 <li>AI-powered feature development</li>
                 <li>Priority support</li>
+                <li>Cancel anytime</li>
             </ul>
             <a href="/contact" class="btn btn-primary" style="width: 100%; justify-content: center;">Get Started &rarr;</a>
         </div>
 
-        <div class="price-card">
-            <h3>Enterprise</h3>
-            <div class="price-amount">Custom</div>
-            <div class="price-period">tailored to your org</div>
+        <div class="price-card" id="annualCard">
+            <h3>Annual</h3>
+            <div class="price-amount" id="annualAmount">$24,000</div>
+            <div class="price-period">per year</div>
             <ul class="price-features">
-                <li>Everything in Monthly/Annual</li>
-                <li>Dedicated infrastructure</li>
-                <li>Custom app development</li>
-                <li>White-label branding</li>
-                <li>Your GCP/AWS account, your data</li>
-                <li>SLA with uptime guarantee</li>
-                <li>SSO and advanced security</li>
-                <li>Custom integrations</li>
-                <li>Dedicated account manager</li>
+                <li><strong>Everything in Monthly, plus:</strong></li>
+                <li>Watchtower &mdash; your platform control room</li>
+                <li class="sub-feature">Monitor all apps, track evolution history, deployment health</li>
+                <li>Full source code access</li>
+                <li>Self-hosting rights</li>
+                <li>You own it forever</li>
             </ul>
-            <a href="/contact" class="btn btn-secondary" style="width: 100%; justify-content: center;">Contact Us &rarr;</a>
+            <a href="/contact" class="btn btn-secondary" style="width: 100%; justify-content: center;">Go Annual &rarr;</a>
         </div>
     </div>
 
@@ -127,11 +126,11 @@
 
             <div class="faq-item">
                 <button class="faq-question" aria-expanded="false">
-                    How does annual billing work?
+                    What is Watchtower?
                     <span class="faq-icon">+</span>
                 </button>
                 <div class="faq-answer">
-                    <p>Annual billing is $19,200/year ($1,600/mo effective rate), saving you $4,800 compared to monthly billing. You get the exact same features and support — just a lower price for committing to a year.</p>
+                    <p>Watchtower is your platform control room. It monitors all your Gigabox apps, tracks evolution history, deployment health, and infrastructure status from a single dashboard. Watchtower is included exclusively with the Annual plan.</p>
                 </div>
             </div>
 
@@ -141,7 +140,17 @@
                     <span class="faq-icon">+</span>
                 </button>
                 <div class="faq-answer">
-                    <p>Yes. Every app comes with full source code access via a private GitHub repository. If you cancel, you keep the code and can run it yourself. No vendor lock-in.</p>
+                    <p>Annual plan includes full source code access and self-hosting rights. You own the code permanently — even if you cancel. Monthly subscribers get managed hosting with full API access but not source code.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" aria-expanded="false">
+                    What happens if I cancel?
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <p>Monthly: you can cancel anytime. Your apps stop at the end of the billing period. Annual: you keep the source code and self-hosting rights forever. Walk away with everything you paid for.</p>
                 </div>
             </div>
 
@@ -151,7 +160,7 @@
                     <span class="faq-icon">+</span>
                 </button>
                 <div class="faq-answer">
-                    <p>It means exactly that. Add as many users as you need to any app. There are no per-seat charges, no user tiers, no "contact us for pricing" when you hit a limit. The price is $2,000/mo regardless of team size.</p>
+                    <p>It means exactly that. Add as many users as you need to any app. There are no per-seat charges, no user tiers, no "contact us for pricing" when you hit a limit. The price is the same regardless of team size.</p>
                 </div>
             </div>
 
@@ -181,7 +190,7 @@
                     <span class="faq-icon">+</span>
                 </button>
                 <div class="faq-answer">
-                    <p>Three differences: (1) You own the code — no vendor lock-in. (2) Unlimited users — no per-seat pricing that scales against you. (3) Custom features built by AI — no waiting for the vendor's roadmap. You get the functionality of enterprise SaaS without the enterprise pricing model.</p>
+                    <p>Three differences: (1) Annual plan gives you full source code — no vendor lock-in. (2) Unlimited users — no per-seat pricing that scales against you. (3) Custom features built by AI — no waiting for the vendor's roadmap. You get the functionality of enterprise SaaS without the enterprise pricing model.</p>
                 </div>
             </div>
         </div>
@@ -191,7 +200,7 @@
     <div class="cta-banner" style="margin-bottom: 4rem;">
         <p class="section-label">> Ready?</p>
         <h2>Start with the full stack</h2>
-        <p>$2,000/mo. Cancel anytime. You keep the code.</p>
+        <p>$2,000/mo. Cancel anytime.</p>
         <a href="/contact" class="btn btn-primary">Get Started &rarr;</a>
     </div>
 </div>
@@ -201,23 +210,23 @@
 <script>
 document.addEventListener('DOMContentLoaded', function() {
     var toggle = document.getElementById('billingToggle');
-    var amount = document.getElementById('priceAmount');
-    var period = document.getElementById('pricePeriod');
     var monthlyLabel = document.getElementById('toggleMonthly');
     var annualLabel = document.getElementById('toggleAnnual');
+    var monthlyCard = document.getElementById('monthlyCard');
+    var annualCard = document.getElementById('annualCard');
     var isAnnual = false;
 
     toggle.addEventListener('click', function() {
         isAnnual = !isAnnual;
         toggle.classList.toggle('active', isAnnual);
         if (isAnnual) {
-            amount.textContent = '$19,200';
-            period.textContent = 'per year ($1,600/mo)';
+            monthlyCard.classList.remove('featured');
+            annualCard.classList.add('featured');
             monthlyLabel.classList.remove('active');
             annualLabel.classList.add('active');
         } else {
-            amount.textContent = '$2,000';
-            period.textContent = 'per month';
+            monthlyCard.classList.add('featured');
+            annualCard.classList.remove('featured');
             monthlyLabel.classList.add('active');
             annualLabel.classList.remove('active');
         }
