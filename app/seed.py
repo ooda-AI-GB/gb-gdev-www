@@ -118,7 +118,7 @@ def _seed_apps(db):
 def _seed_team(db):
     members = [
         {
-            "name": "Luis Manalac",
+            "name": "Luis",
             "role": "CEO & Principal AI Engineer",
             "bio": "UC Berkeley Applied Math. First-wave Wall Street quant. Founded startup acquired for $135M. President/CEO Lady Luck Digital (The Last of Us, Uncharted). Built Gigabox: an AI-orchestrated software platform that ships enterprise applications in days.",
             "credentials": "UC Berkeley Applied Math '84",
@@ -132,13 +132,13 @@ def _seed_team(db):
             "sort_order": 2,
         },
         {
-            "name": "Eric Manalac",
+            "name": "Eric",
             "role": "AI/RAG Specialist",
             "bio": "Retrieval-augmented generation and knowledge systems. Making AI that knows what it needs to know.",
             "sort_order": 3,
         },
         {
-            "name": "Victor Manalac",
+            "name": "Victor",
             "role": "Business Analytics",
             "bio": "Turning data into decisions. Analytics architecture and business intelligence.",
             "sort_order": 4,
