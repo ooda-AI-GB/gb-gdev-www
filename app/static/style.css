@@ -71,8 +71,8 @@ h3 { font-size: 1.15rem; }
 
 /* === HERO === */
 .hero {
-    min-height: 100vh; display: flex; align-items: center;
-    padding-top: 64px;
+    min-height: auto; display: flex; align-items: center;
+    padding-top: 104px; padding-bottom: 40px;
     background:
         radial-gradient(ellipse at 20% 50%, rgba(249, 115, 22, 0.05) 0%, transparent 60%),
         radial-gradient(ellipse at 80% 20%, rgba(249, 115, 22, 0.03) 0%, transparent 50%);
@@ -350,6 +350,20 @@ h3 { font-size: 1.15rem; }
     border: 1px solid #262626;
     border-radius: 12px;
     padding: 1.5rem;
+}
+
+/* === ANNUAL BADGE === */
+.annual-badge {
+    background: rgba(249, 115, 22, 0.15);
+    color: #f97316;
+    padding: 0.15rem 0.6rem;
+    border-radius: 4px;
+    font-size: 0.65rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    vertical-align: middle;
+    margin-left: 0.5rem;
 }
 
 /* === STATS BAR === */

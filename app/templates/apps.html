@@ -22,7 +22,7 @@
                     &middot; {{ app.evolution_count }} evolutions
                     {% endif %}
                 </div>
-                <h2>{{ app.name }}</h2>
+                <h2>{{ app.name }}{% if app.slug == 'watchtower' %} <span class="annual-badge">Annual Plan Only</span>{% endif %}</h2>
                 <p class="showcase-tagline">{{ app.tagline }}</p>
                 {% if app.replaces %}
                 <p class="showcase-replaces">Replaces: <span class="text-accent">{{ app.replaces }}</span></p>
