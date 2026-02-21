@@ -3,45 +3,61 @@
 
 {% block content %}
 <div class="container">
-    <div class="page-header">
-        <p class="section-label">> App Gallery</p>
-        <h1>Our Apps</h1>
-        <p>Production-ready enterprise software. Live and running.</p>
-    </div>
-
-    <div class="filter-tabs">
-        {% for value, label in categories %}
-        <a href="{% if value == 'all' %}/apps{% else %}/apps?category={{ value }}{% endif %}"
-           class="filter-tab {% if selected_category == value %}active{% endif %}">{{ label }}</a>
-        {% endfor %}
-    </div>
-
-    <div class="grid-3">
-        {% for app in apps %}
-        <div class="card">
-            <div class="card-status">
-                <span class="dot {% if app.status == 'live' %}dot-live{% elif app.status == 'building' %}dot-building{% else %}dot-coming{% endif %}"></span>
-                {{ app.status | upper }}
-            </div>
-            <h3><a href="/apps/{{ app.slug }}" style="color: #fafafa;">{{ app.name }}</a></h3>
-            <p class="card-tagline">{{ app.tagline }}</p>
-            <div class="card-meta">
-                <span>{{ app.evolution_count }} evolutions</span>
-                {% if app.live_url %}
-                <a href="{{ app.live_url }}?utm_source=gigabox&utm_campaign=gallery" target="_blank">View Live &rarr;</a>
-                {% endif %}
-            </div>
-        </div>
-        {% endfor %}
+    <div class="page-header" style="text-align: center;">
+        <p class="section-label">> The Stack</p>
+        <h1>Six apps. One platform.</h1>
+        <p>Every app is live, production-ready, and included in your plan.</p>
     </div>
 </div>
+
+{% for app in apps %}
+<section class="app-showcase {% if loop.index is odd %}section-alt{% endif %}">
+    <div class="container">
+        <div class="showcase-grid">
+            <div class="showcase-info">
+                <div class="showcase-status">
+                    <span class="dot {% if app.status == 'live' %}dot-live{% elif app.status == 'building' %}dot-building{% else %}dot-coming{% endif %}"></span>
+                    {{ app.status | upper }}
+                    {% if app.evolution_count %}
+                    &middot; {{ app.evolution_count }} evolutions
+                    {% endif %}
+                </div>
+                <h2>{{ app.name }}</h2>
+                <p class="showcase-tagline">{{ app.tagline }}</p>
+                {% if app.replaces %}
+                <p class="showcase-replaces">Replaces: <span class="text-accent">{{ app.replaces }}</span></p>
+                {% endif %}
+                <p class="showcase-description">{{ app.description }}</p>
+                <div class="showcase-actions">
+                    {% if app.live_url %}
+                    <a href="{{ app.live_url }}?utm_source=gigabox&utm_campaign=apps" class="btn btn-primary" target="_blank">Live Demo &rarr;</a>
+                    {% endif %}
+                    <a href="/apps/{{ app.slug }}" class="btn btn-secondary">Details</a>
+                </div>
+            </div>
+            <div class="showcase-features">
+                <p class="section-label" style="margin-bottom: 1rem;">> Features</p>
+                <ul class="features-list">
+                    {% for feature in parse_features(app.features) %}
+                    <li>{{ feature }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+{% endfor %}
 
 <section class="section">
     <div class="container">
         <div class="cta-banner">
-            <h2>Need a custom app?</h2>
-            <p>$25K fixed. One week. You own the code.</p>
-            <a href="/contact" class="btn btn-primary">Get Started &rarr;</a>
+            <p class="section-label">> All included</p>
+            <h2>Get the full stack</h2>
+            <p>$2,000/mo. Unlimited users. Every app above.</p>
+            <div class="hero-actions" style="justify-content: center;">
+                <a href="/pricing" class="btn btn-primary">See Pricing &rarr;</a>
+                <a href="/contact" class="btn btn-secondary">Talk to Us</a>
+            </div>
         </div>
     </div>
 </section>

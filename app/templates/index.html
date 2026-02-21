@@ -6,60 +6,134 @@
 <section class="hero">
     <div class="container">
         <div class="hero-content">
-            <p class="section-label">> AI Software Factory</p>
-            <h1>We build enterprise software <span class="accent">in one week.</span></h1>
-            <p class="hero-sub">AI-powered apps. $25K fixed price. You own the code. No per-seat fees. No subscriptions. No surprises.</p>
+            <p class="section-label">> The complete stack</p>
+            <h1>Replace your SaaS sprawl with <span class="accent">one platform.</span></h1>
+            <p class="hero-sub">CRM, Help Desk, Analytics, Social, Hiring, Cloud Ops — all integrated, all yours. $2K/mo. Unlimited users. No per-seat fees.</p>
             <div class="hero-actions">
-                <a href="/apps" class="btn btn-primary">See the Apps &rarr;</a>
-                <a href="/contact" class="btn btn-secondary">Talk to Us</a>
+                <a href="/pricing" class="btn btn-primary">See Pricing &rarr;</a>
+                <a href="/apps" class="btn btn-secondary">Explore the Apps</a>
             </div>
         </div>
     </div>
 </section>
 
-<!-- WHAT WE REPLACE -->
+<!-- COMPARISON TABLE -->
 <section class="section">
     <div class="container">
-        <p class="section-label">> What we replace</p>
-        <h2>Enterprise SaaS, rebuilt from scratch</h2>
-        <div class="replaces-grid">
-            {% for app in apps[:4] %}
-            <div class="replace-card">
-                <p class="replaces-name">{{ app.replaces.split(',')[0] if app.replaces else '' }}</p>
-                <h3>{{ app.name }}</h3>
-                <p class="text-muted" style="font-size: 0.85rem; margin-bottom: 1rem;">{{ app.tagline }}</p>
-                <a href="{{ app.live_url }}?utm_source=gigabox&utm_campaign=gallery" class="btn btn-sm btn-secondary" target="_blank">Live &rarr;</a>
-            </div>
-            {% endfor %}
+        <p class="section-label">> What you're paying now</p>
+        <h2>Six tools. Six vendors. Six invoices.</h2>
+        <p class="text-muted" style="max-width: 640px; margin-bottom: 2.5rem;">A typical 25-person company spends $4,000-7,000/mo on fragmented SaaS. Gigabox replaces all of it.</p>
+
+        <div class="comparison-table-wrap">
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Category</th>
+                        <th>What You Use</th>
+                        <th>Typical Cost</th>
+                        <th>Gigabox App</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Sales CRM</td>
+                        <td class="strikethrough">Salesforce / HubSpot</td>
+                        <td class="strikethrough">$150–330/user/mo</td>
+                        <td><a href="/apps/crm-pro">CRM Pro</a></td>
+                        <td><span class="dot dot-live"></span> Live</td>
+                    </tr>
+                    <tr>
+                        <td>Support</td>
+                        <td class="strikethrough">Zendesk / Intercom</td>
+                        <td class="strikethrough">$55–115/agent/mo</td>
+                        <td><a href="/apps/help-desk">Help Desk Pro</a></td>
+                        <td><span class="dot dot-live"></span> Live</td>
+                    </tr>
+                    <tr>
+                        <td>Analytics</td>
+                        <td class="strikethrough">Tableau / Looker</td>
+                        <td class="strikethrough">$35–75/user/mo</td>
+                        <td><a href="/apps/analytics-pro">Analytics Pro</a></td>
+                        <td><span class="dot dot-live"></span> Live</td>
+                    </tr>
+                    <tr>
+                        <td>Social Media</td>
+                        <td class="strikethrough">Hootsuite / Buffer</td>
+                        <td class="strikethrough">$99–249/mo</td>
+                        <td><a href="/apps/social-pro">Social Pro</a></td>
+                        <td><span class="dot dot-live"></span> Live</td>
+                    </tr>
+                    <tr>
+                        <td>Hiring</td>
+                        <td class="strikethrough">Greenhouse / Lever</td>
+                        <td class="strikethrough">$6,000–25,000/yr</td>
+                        <td><a href="/apps/jobs-pro">Jobs Pro</a></td>
+                        <td><span class="dot dot-live"></span> Live</td>
+                    </tr>
+                    <tr>
+                        <td>Cloud Ops</td>
+                        <td class="strikethrough">CloudHealth / Vantage</td>
+                        <td class="strikethrough">$500+/mo</td>
+                        <td><a href="/apps/cloud-pro">Cloud Pro</a></td>
+                        <td><span class="dot dot-live"></span> Live</td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="2">Gigabox — all 6 apps, unlimited users</td>
+                        <td colspan="3" class="comparison-total"><span class="accent">$2,000/mo</span></td>
+                    </tr>
+                </tfoot>
+            </table>
         </div>
     </div>
 </section>
 
-<!-- HOW IT WORKS -->
+<!-- HOW IT'S BUILT -->
 <section class="section section-alt">
     <div class="container">
-        <p class="section-label">> How it works</p>
-        <h2>Four steps to production</h2>
-        <div class="steps-grid">
-            <div class="step">
-                <div class="step-number">01</div>
-                <h3>Describe</h3>
-                <p>Tell us what you need. Plain English. We'll handle the rest.</p>
+        <p class="section-label">> Under the hood</p>
+        <h2>AI-orchestrated software</h2>
+        <p class="text-muted" style="max-width: 640px; margin-bottom: 2.5rem;">Every Gigabox app is built and maintained by Claude Code — an AI engineering agent. New features ship in hours, not quarters.</p>
+
+        <div class="terminal">
+            <div class="terminal-header">
+                <div class="terminal-dots">
+                    <span class="terminal-dot red"></span>
+                    <span class="terminal-dot yellow"></span>
+                    <span class="terminal-dot green"></span>
+                </div>
+                <span class="terminal-title">claude-code</span>
             </div>
-            <div class="step">
-                <div class="step-number">02</div>
-                <h3>Build</h3>
-                <p>Our AI factory generates production-ready code in days, not months.</p>
+            <div class="terminal-body">
+                <div class="terminal-line"><span class="terminal-prompt">$</span> claude "Add AI-powered competitive intelligence to CRM Pro"</div>
+                <div class="terminal-line terminal-output">&nbsp;</div>
+                <div class="terminal-line terminal-output"><span class="terminal-muted">&gt;</span> Reading CLAUDE.md rules...</div>
+                <div class="terminal-line terminal-output"><span class="terminal-muted">&gt;</span> Analyzing existing codebase (23 files)</div>
+                <div class="terminal-line terminal-output"><span class="terminal-muted">&gt;</span> Adding competitor tracking model...</div>
+                <div class="terminal-line terminal-output"><span class="terminal-muted">&gt;</span> Creating API endpoints: /api/competitors, /api/intel</div>
+                <div class="terminal-line terminal-output"><span class="terminal-muted">&gt;</span> Building dashboard widget...</div>
+                <div class="terminal-line terminal-output"><span class="terminal-muted">&gt;</span> Running tests... 14/14 passed</div>
+                <div class="terminal-line terminal-output"><span class="terminal-muted">&gt;</span> Pushing to GitHub...</div>
+                <div class="terminal-line terminal-output"><span class="terminal-muted">&gt;</span> Deploying to gdev-crm.gigabox.app...</div>
+                <div class="terminal-line terminal-output">&nbsp;</div>
+                <div class="terminal-line terminal-success">&#10003; Feature live. Build time: 2m 45s</div>
             </div>
-            <div class="step">
-                <div class="step-number">03</div>
-                <h3>Deploy</h3>
-                <p>Your app goes live on your domain with full infrastructure.</p>
+        </div>
+
+        <div class="grid-3" style="margin-top: 3rem;">
+            <div class="feature-point">
+                <h3>Build in minutes</h3>
+                <p class="text-muted">New features go from description to production in under 5 minutes. No sprints. No standups. No two-week cycles.</p>
             </div>
-            <div class="step">
-                <div class="step-number">04</div>
-                <h3>Own</h3>
-                <p>You get the code, the database, and 12 weeks of support.</p>
+            <div class="feature-point">
+                <h3>You own the code</h3>
+                <p class="text-muted">Every app runs on your infrastructure. Full source code access. No vendor lock-in. Leave anytime with everything.</p>
+            </div>
+            <div class="feature-point">
+                <h3>Full REST API</h3>
+                <p class="text-muted">Every app exposes a complete API. Integrate with your existing systems, build automations, connect everything.</p>
             </div>
         </div>
     </div>
@@ -75,12 +149,12 @@
                 <div class="stat-label">Live Apps</div>
             </div>
             <div>
-                <div class="stat-number">$25K</div>
-                <div class="stat-label">Fixed Price</div>
+                <div class="stat-number">$2K</div>
+                <div class="stat-label">Per Month</div>
             </div>
             <div>
-                <div class="stat-number" data-target="7" data-suffix=" Day">0</div>
-                <div class="stat-label">Delivery</div>
+                <div class="stat-number">&infin;</div>
+                <div class="stat-label">Users Included</div>
             </div>
             <div>
                 <div class="stat-number">$0</div>
@@ -120,9 +194,12 @@
     <div class="container">
         <div class="cta-banner">
             <p class="section-label">> Ready?</p>
-            <h2>Let's build something</h2>
-            <p>$25K fixed. One week. You own everything.</p>
-            <a href="/contact" class="btn btn-primary">Get Started &rarr;</a>
+            <h2>Replace your SaaS stack</h2>
+            <p>$2,000/mo. Unlimited users. All apps included.</p>
+            <div class="hero-actions" style="justify-content: center;">
+                <a href="/pricing" class="btn btn-primary">See Pricing &rarr;</a>
+                <a href="/contact" class="btn btn-secondary">Talk to Us</a>
+            </div>
         </div>
     </div>
 </section>

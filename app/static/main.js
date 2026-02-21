@@ -25,6 +25,23 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+    // FAQ accordions
+    var faqItems = document.querySelectorAll('.faq-question');
+    faqItems.forEach(function(btn) {
+        btn.addEventListener('click', function() {
+            var item = btn.parentElement;
+            var isOpen = item.classList.contains('open');
+            // Close all
+            document.querySelectorAll('.faq-item').forEach(function(i) {
+                i.classList.remove('open');
+            });
+            // Toggle clicked
+            if (!isOpen) {
+                item.classList.add('open');
+            }
+        });
+    });
+
     // Page view tracking
     trackPageView();
 });
@@ -33,7 +50,6 @@ function animateCounter(el) {
     var target = parseInt(el.getAttribute('data-target'));
     var suffix = el.getAttribute('data-suffix') || '';
     var duration = 1500;
-    var start = 0;
     var startTime = null;
 
     function step(timestamp) {

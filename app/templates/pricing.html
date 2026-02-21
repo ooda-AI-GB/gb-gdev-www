@@ -5,52 +5,225 @@
 <div class="container">
     <div class="page-header" style="text-align: center;">
         <p class="section-label">> Simple pricing</p>
-        <h1>No surprises</h1>
-        <p>Fixed price. You own everything. No recurring fees.</p>
+        <h1>One platform. One price.</h1>
+        <p>All apps. Unlimited users. No per-seat fees. No surprises.</p>
+    </div>
+
+    <!-- TOGGLE -->
+    <div class="pricing-toggle">
+        <span class="toggle-label" id="toggleMonthly">Monthly</span>
+        <button class="toggle-switch" id="billingToggle" aria-label="Toggle annual billing">
+            <span class="toggle-knob"></span>
+        </button>
+        <span class="toggle-label" id="toggleAnnual">Annual <span class="save-badge">Save $4,800</span></span>
     </div>
 
     <div class="pricing-grid">
         <div class="price-card featured">
-            <h3>Standard</h3>
-            <div class="price-amount">$25,000</div>
-            <div class="price-period">fixed price</div>
+            <h3>Monthly</h3>
+            <div class="price-amount" id="priceAmount">$2,000</div>
+            <div class="price-period" id="pricePeriod">per month</div>
             <ul class="price-features">
-                <li>Custom-built application</li>
-                <li>Your domain, your brand</li>
-                <li>You own the source code</li>
-                <li>7-day delivery</li>
-                <li>12 weeks of support</li>
-                <li>Full REST API</li>
-                <li>No per-seat fees</li>
+                <li>All 6 production apps included</li>
+                <li>CRM, Help Desk, Analytics, Social, Jobs, Cloud</li>
+                <li>Unlimited users — no per-seat fees</li>
+                <li>Full source code ownership</li>
+                <li>Complete REST API for every app</li>
+                <li>Custom domain and branding</li>
                 <li>PostgreSQL database included</li>
+                <li>AI-powered feature development</li>
+                <li>Priority support</li>
             </ul>
             <a href="/contact" class="btn btn-primary" style="width: 100%; justify-content: center;">Get Started &rarr;</a>
         </div>
 
         <div class="price-card">
             <h3>Enterprise</h3>
-            <div class="price-amount">$250,000</div>
-            <div class="price-period">white-label platform</div>
+            <div class="price-amount">Custom</div>
+            <div class="price-period">tailored to your org</div>
             <ul class="price-features">
-                <li>Everything in Standard</li>
-                <li>Full app suite (7+ apps)</li>
+                <li>Everything in Monthly/Annual</li>
+                <li>Dedicated infrastructure</li>
+                <li>Custom app development</li>
                 <li>White-label branding</li>
-                <li>Your GCP account, your data</li>
-                <li>Dedicated support</li>
+                <li>Your GCP/AWS account, your data</li>
                 <li>SLA with uptime guarantee</li>
+                <li>SSO and advanced security</li>
                 <li>Custom integrations</li>
-                <li>Training and onboarding</li>
+                <li>Dedicated account manager</li>
             </ul>
             <a href="/contact" class="btn btn-secondary" style="width: 100%; justify-content: center;">Contact Us &rarr;</a>
         </div>
     </div>
 
-    <div style="text-align: center; margin-top: 4rem; max-width: 600px; margin-left: auto; margin-right: auto;">
-        <p class="mono text-muted" style="font-size: 0.9rem; line-height: 1.8;">
-            NO SUBSCRIPTIONS. NO PER-SEAT PRICING.<br>
-            NO SURPRISE INVOICES. NO VENDOR LOCK-IN.<br>
-            <span style="color: #fafafa;">YOU OWN THE CODE. PERIOD.</span>
-        </p>
+    <!-- COMPARISON -->
+    <div class="pricing-comparison">
+        <p class="section-label" style="text-align: center;">> The math</p>
+        <h2 style="text-align: center;">What you're spending now vs. Gigabox</h2>
+        <p class="text-muted" style="text-align: center; max-width: 600px; margin: 0 auto 2rem;">Based on a 25-person company using 6 SaaS tools. Per-seat pricing adds up fast.</p>
+
+        <div class="comparison-table-wrap">
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Tool</th>
+                        <th>Typical SaaS Cost</th>
+                        <th>Gigabox</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Salesforce (10 seats)</td>
+                        <td class="strikethrough">$1,500 – $3,300/mo</td>
+                        <td rowspan="6" class="comparison-included">Included</td>
+                    </tr>
+                    <tr>
+                        <td>Zendesk (5 agents)</td>
+                        <td class="strikethrough">$275 – $575/mo</td>
+                    </tr>
+                    <tr>
+                        <td>Tableau (5 viewers)</td>
+                        <td class="strikethrough">$175 – $375/mo</td>
+                    </tr>
+                    <tr>
+                        <td>Hootsuite</td>
+                        <td class="strikethrough">$99 – $249/mo</td>
+                    </tr>
+                    <tr>
+                        <td>Greenhouse</td>
+                        <td class="strikethrough">$500 – $2,000/mo</td>
+                    </tr>
+                    <tr>
+                        <td>CloudHealth</td>
+                        <td class="strikethrough">$500+/mo</td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td>Total</td>
+                        <td class="strikethrough">$3,049 – $7,000+/mo</td>
+                        <td class="comparison-total"><span class="accent">$2,000/mo</span></td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+
+    <!-- FAQ -->
+    <section class="section">
+        <p class="section-label" style="text-align: center;">> FAQ</p>
+        <h2 style="text-align: center;">Common questions</h2>
+
+        <div class="faq-list">
+            <div class="faq-item">
+                <button class="faq-question" aria-expanded="false">
+                    What's included in the $2,000/mo plan?
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <p>All six production apps: CRM Pro, Help Desk Pro, Analytics Pro, Social Pro, Jobs Pro, and Cloud Pro. Each app includes a full REST API, custom domain, PostgreSQL database, and unlimited users. No per-seat fees, ever.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" aria-expanded="false">
+                    How does annual billing work?
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <p>Annual billing is $19,200/year ($1,600/mo effective rate), saving you $4,800 compared to monthly billing. You get the exact same features and support — just a lower price for committing to a year.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" aria-expanded="false">
+                    Do I own the source code?
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <p>Yes. Every app comes with full source code access via a private GitHub repository. If you cancel, you keep the code and can run it yourself. No vendor lock-in.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" aria-expanded="false">
+                    What does "unlimited users" mean?
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <p>It means exactly that. Add as many users as you need to any app. There are no per-seat charges, no user tiers, no "contact us for pricing" when you hit a limit. The price is $2,000/mo regardless of team size.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" aria-expanded="false">
+                    Can I request custom features?
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <p>Yes. Every plan includes AI-powered feature development. Describe what you need and our AI engineering pipeline builds and deploys it. Custom features are built directly into your apps — no plugins, no workarounds.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" aria-expanded="false">
+                    What's the tech stack?
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <p>Python (FastAPI), PostgreSQL, deployed on Google Cloud. Each app has its own database and runs independently. The full REST API means you can integrate with anything — Slack, Zapier, your own systems.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" aria-expanded="false">
+                    How is this different from buying SaaS tools?
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <p>Three differences: (1) You own the code — no vendor lock-in. (2) Unlimited users — no per-seat pricing that scales against you. (3) Custom features built by AI — no waiting for the vendor's roadmap. You get the functionality of enterprise SaaS without the enterprise pricing model.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <div class="cta-banner" style="margin-bottom: 4rem;">
+        <p class="section-label">> Ready?</p>
+        <h2>Start with the full stack</h2>
+        <p>$2,000/mo. Cancel anytime. You keep the code.</p>
+        <a href="/contact" class="btn btn-primary">Get Started &rarr;</a>
     </div>
 </div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    var toggle = document.getElementById('billingToggle');
+    var amount = document.getElementById('priceAmount');
+    var period = document.getElementById('pricePeriod');
+    var monthlyLabel = document.getElementById('toggleMonthly');
+    var annualLabel = document.getElementById('toggleAnnual');
+    var isAnnual = false;
+
+    toggle.addEventListener('click', function() {
+        isAnnual = !isAnnual;
+        toggle.classList.toggle('active', isAnnual);
+        if (isAnnual) {
+            amount.textContent = '$19,200';
+            period.textContent = 'per year ($1,600/mo)';
+            monthlyLabel.classList.remove('active');
+            annualLabel.classList.add('active');
+        } else {
+            amount.textContent = '$2,000';
+            period.textContent = 'per month';
+            monthlyLabel.classList.add('active');
+            annualLabel.classList.remove('active');
+        }
+    });
+
+    monthlyLabel.classList.add('active');
+});
+</script>
 {% endblock %}

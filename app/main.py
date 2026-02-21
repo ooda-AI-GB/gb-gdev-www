@@ -2,7 +2,7 @@ from fastapi import FastAPI
 from fastapi.staticfiles import StaticFiles
 from app.database import engine, Base
 
-app = FastAPI(title="Gigabox", description="AI Software Factory")
+app = FastAPI(title="Gigabox", description="Complete Software Stack for Growing Businesses")
 
 
 @app.get("/health")

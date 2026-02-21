@@ -100,8 +100,8 @@ def _seed_apps(db):
         {
             "slug": "watchtower",
             "name": "Watchtower",
-            "tagline": "The factory control room",
-            "description": "Internal monitoring dashboard tracking all Gigabox projects, evolutions, builds, fleet status, and health. The nerve center of the AI factory.",
+            "tagline": "The operations control room",
+            "description": "Internal monitoring dashboard tracking all projects, evolutions, builds, fleet status, and infrastructure health. The nerve center of the platform.",
             "category": "operations",
             "live_url": "https://gdev-watchtower.gigabox.app",
             "features": json.dumps(["Project and evolution tracking", "Build status monitoring", "VM fleet control", "Health history and alerts", "Task log viewer", "Auto-refresh dashboards"]),
@@ -120,14 +120,14 @@ def _seed_team(db):
         {
             "name": "Luis Manalac",
             "role": "CEO & Principal AI Engineer",
-            "bio": "UC Berkeley Applied Math. First-wave Wall Street quant. Founded startup acquired for $135M. President/CEO Lady Luck Digital (The Last of Us, Uncharted). Built Gigabox: an AI software factory that ships enterprise SaaS in days, not months.",
+            "bio": "UC Berkeley Applied Math. First-wave Wall Street quant. Founded startup acquired for $135M. President/CEO Lady Luck Digital (The Last of Us, Uncharted). Built Gigabox: an AI-orchestrated software platform that ships enterprise applications in days.",
             "credentials": "UC Berkeley Applied Math '84",
             "sort_order": 1,
         },
         {
             "name": "Akshay",
             "role": "AI Engineer",
-            "bio": "Stanford CS PhD. Building the intelligence layer that powers the Gigabox factory.",
+            "bio": "Stanford CS PhD. Building the intelligence layer that powers the Gigabox platform.",
             "credentials": "Stanford CS PhD",
             "sort_order": 2,
         },
