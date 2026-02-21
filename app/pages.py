@@ -3,10 +3,31 @@ from fastapi.templating import Jinja2Templates
 from fastapi.responses import RedirectResponse
 from sqlalchemy.orm import Session
 import json
+import re
 import markdown
 
 from app.database import get_db
 from app.models import App, TeamMember, BlogPost, ContactSubmission
+
+
+def strip_markdown(text, length=120):
+    """Strip markdown headers/formatting and return plain text preview."""
+    lines = text.split('\n')
+    plain = []
+    for line in lines:
+        line = line.strip()
+        if not line or line.startswith('#') or line.startswith('```') or line.startswith('---'):
+            continue
+        line = re.sub(r'\*\*(.+?)\*\*', r'\1', line)
+        line = re.sub(r'`(.+?)`', r'\1', line)
+        line = re.sub(r'\[(.+?)\]\(.+?\)', r'\1', line)
+        line = line.lstrip('- ').lstrip('* ')
+        if line:
+            plain.append(line)
+    result = ' '.join(plain)
+    if len(result) > length:
+        result = result[:length].rsplit(' ', 1)[0] + '...'
+    return result
 
 router = APIRouter()
 templates = Jinja2Templates(directory="app/templates")
@@ -44,6 +65,7 @@ def home(request: Request, db: Session = Depends(get_db)):
         "app_count": app_count,
         "parse_features": parse_features,
         "parse_tags": parse_tags,
+        "strip_markdown": strip_markdown,
     })
 
 

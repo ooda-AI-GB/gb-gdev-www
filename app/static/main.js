@@ -25,6 +25,20 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+    // Terminal success pulse on scroll
+    var successLine = document.querySelector('.terminal-success');
+    if (successLine) {
+        var termObserver = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate');
+                    termObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+        termObserver.observe(successLine);
+    }
+
     // FAQ accordions
     var faqItems = document.querySelectorAll('.faq-question');
     faqItems.forEach(function(btn) {
