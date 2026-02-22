@@ -166,27 +166,27 @@ def _seed_blog(db):
             "slug": "cloud-waste-audit",
             "title": "We Found $714/Month in Cloud Waste in Two Hours",
             "subtitle": "A FinOps case study from our own infrastructure",
-            "content": """We ran a full cost audit across two GCP accounts today. What we found was ugly.
+            "content": """We ran a full cost audit across our cloud infrastructure. What we found was ugly.
 
 ## The Damage
 
-A single Cloud Run service — `slack-coworker` — had been crash-looping for two weeks on a bad Postgres password. Cost: **$63 in 14 days**. Nobody noticed because it was in a separate project with no alerts.
+A single background service had been crash-looping for two weeks on a misconfigured database password. Cost: **$63 in 14 days**. Nobody noticed because it was in a separate project with no alerts.
 
 Three orphaned projects from a previous client engagement were still running compute. Another $30/month in pure waste.
 
-An n8n workflow VM we set up for testing but never used in production: $4/month doing absolutely nothing.
+A workflow automation VM we set up for testing but never used in production: $4/month doing absolutely nothing.
 
 ## The Fix
 
 Two hours of focused cleanup:
 
-- Killed the crash-looping Cloud Run service
+- Killed the crash-looping service
 - Deleted the 3 orphaned projects
-- Deleted the n8n VM
-- Migrated all Gemini calls from Pro to Flash (same quality, 80% cheaper)
-- Identified Cloud SQL instances to consolidate
+- Deleted the unused VM
+- Optimized AI model selection (same quality, 80% cheaper)
+- Identified database instances to consolidate
 
-**Result:** $69/month saved on Vertex AI alone. Total projected savings: ~$120/month.
+**Result:** $69/month saved on AI services alone. Total projected savings: ~$120/month.
 
 ## The Lesson
 
@@ -195,109 +195,87 @@ If you're not auditing your cloud spend monthly, you're burning money. Period. T
 We built Cloud Pro specifically to catch this. It monitors your infrastructure, flags waste, and tracks every dollar. Because the first step to optimization is visibility.""",
             "author": "Luis Manalac",
             "category": "case_study",
-            "tags": json.dumps(["finops", "gcp", "cloud", "cost-optimization"]),
+            "tags": json.dumps(["finops", "cloud", "cost-optimization", "operations"]),
             "published": True,
             "published_at": datetime(2026, 2, 20, 10, 0, 0),
             "read_time_minutes": 4,
         },
         {
-            "slug": "every-layer-is-waste",
-            "title": "Every Layer Is Waste",
-            "subtitle": "Why we keep simplifying our architecture",
-            "content": """Our build pipeline started at 8 steps. Today it's 5. Next month it might be 3.
+            "slug": "why-12-apps-one-platform",
+            "title": "Why We Built 12 Apps Instead of One",
+            "subtitle": "The case for specialized tools that share everything",
+            "content": """Most platforms try to cram everything into one monolithic app. We went the other direction.
 
-## The Original Pipeline
+## The Monolith Problem
 
-1. User describes app in Slack
-2. Gemini AI rewrites the prompt (architect layer)
-3. Sanitizer validates dependencies
-4. Verifier checks the output
-5. OpenCode CLI generates code
-6. Watchdog monitors for timeouts
-7. Push to GitHub
-8. Deploy to Coolify
+Every all-in-one tool you've used has the same issue: it's mediocre at everything and great at nothing. The CRM module in your project management tool is always worse than a dedicated CRM. The analytics in your help desk never match a real BI tool.
 
-Every layer was added for a reason. The architect catches bad prompts. The sanitizer fixes dependency conflicts. The verifier ensures the output is deployable.
+And when one module breaks or needs maintenance, the whole platform goes down.
 
-But every layer is also a failure point. And every layer adds latency.
+## Our Approach
 
-## The Realization
+Gigabox is 12 independent apps that share data natively:
 
-When we swapped Gemini for Claude on the code generation step, something interesting happened: Claude didn't need the architect. It didn't corrupt URLs. It didn't hallucinate package names. It followed the CLAUDE.md rules file and just... built the app correctly.
+- **CRM Pro** handles contacts and pipeline
+- **Help Desk Pro** handles tickets and knowledge base
+- **Analytics Pro** handles dashboards and insights
+- **Finance Pro** tracks expenses and generates tax reports
+- **Productivity Pro** manages tasks and projects
+- **Legal Pro** tracks contracts and compliance
 
-So we removed the architect. And the sanitizer. And the verifier. And the watchdog.
+Each app is purpose-built for its domain. Each has its own database. Each can be updated independently without affecting the others.
 
-**8 steps became 5:**
+But they all talk to each other. Create a contact in CRM and it's available in Help Desk. Close a deal and Analytics updates the revenue dashboard automatically. Onboard a client and the AI assistant sets up their profile across every app in seconds.
 
-1. User describes app
-2. Clone golden template
-3. Claude transforms it
-4. Push to GitHub
-5. Deploy
+## The Result
 
-Same result. Fewer moving parts. Faster builds. Fewer bugs.
+You get enterprise-grade functionality in each domain, with the integration benefits of a single platform. No copy-paste between tools. No CSV imports. No "check the other app for that data."
 
-## The Principle
-
-Every abstraction layer you add is technical debt you're pre-paying. If the underlying system improves enough, those layers become pure overhead.
-
-Review your stack regularly. Ask: "If I removed this layer, what would break?" If the answer is "nothing, because the thing it was protecting against no longer happens" — delete it.""",
+Twelve specialized tools. One login. One invoice. One AI assistant that ties it all together.""",
             "author": "Luis Manalac",
             "category": "philosophy",
-            "tags": json.dumps(["architecture", "simplicity", "engineering"]),
+            "tags": json.dumps(["architecture", "platform", "integration", "product"]),
             "published": True,
             "published_at": datetime(2026, 2, 20, 12, 0, 0),
             "read_time_minutes": 3,
         },
         {
-            "slug": "8-steps-to-5",
-            "title": "From 8 Steps to 5: How We Replaced Our Build Pipeline",
-            "subtitle": "The Uno to CC Worker migration story",
-            "content": """Last week our build pipeline had 8 moving parts across 4 services. Today it has 5 steps and one service. Here's how we got there.
+            "slug": "per-seat-pricing-is-a-tax-on-growth",
+            "title": "Per-Seat Pricing Is a Tax on Growth",
+            "subtitle": "Why we charge a flat rate for unlimited users",
+            "content": """Every SaaS company you use charges per seat. It's the industry standard. It's also a terrible deal for growing businesses.
 
-## The Old Way
+## The Math
 
-Our original pipeline used **Uno** (a Slack bot) to receive build requests, **Viva** (a Kubernetes worker) to execute code generation with OpenCode CLI, and **Gemini** to architect the prompts. It worked. Apps got built. But the chain was fragile.
+A 25-person company using the standard enterprise stack:
 
-The Gemini architect would sometimes corrupt `git` URLs into `gitpython`. The sanitizer would sometimes strip valid dependencies. The verifier would flag false positives. Each layer added ~30 seconds and a 5% failure rate.
+- **CRM:** $150/seat x 10 sales reps = $1,500/mo
+- **Help Desk:** $115/seat x 5 agents = $575/mo
+- **Analytics:** $75/seat x 5 viewers = $375/mo
+- **Project Management:** $25/seat x 25 users = $625/mo
+- **Contract Management:** $60/seat x 5 legal = $300/mo
 
-Multiply that across 8 steps and your end-to-end success rate drops to ~66%.
+That's **$3,375/mo** — and it goes up every time you hire someone. Add 10 more people and your software cost jumps $1,000+/month without any new functionality.
 
-## The New Way
+## The Perverse Incentive
 
-We built **CC Worker** — a lightweight agent that runs on a VM, picks up tasks from a queue, and executes them with Claude.
+Per-seat pricing punishes you for growing. It creates a world where managers ask "do they really need access?" instead of "how do we get everyone the tools they need?"
 
-The entire pipeline:
+It means your intern can't look up a customer record because you didn't buy them a CRM seat. Your CEO can't check the support queue because Zendesk charges extra for "light agents."
 
-1. **API call** creates a task with an instruction
-2. **CC Worker** picks it up, clones the golden template
-3. **Claude** reads the CLAUDE.md rules and transforms the app
-4. **Git push** to GitHub
-5. **Coolify** auto-deploys
+## Our Model
 
-No architect. No sanitizer. No verifier. No watchdog. Claude follows the rules file and gets it right the first time.
+Gigabox costs $2,000/month. For everyone. All 12 apps. Unlimited users.
 
-## The Results
+Hire 10 people tomorrow? Same price. Open a new office with 50 employees? Same price. Give your board members read-only access to every dashboard? Same price.
 
-We ran three experiments:
-
-- **Fresh scaffold:** 2 minutes 45 seconds. Zero bugs. All rules followed.
-- **Fork-transform:** 13 files modified. Auth and billing preserved perfectly.
-- **Full pipeline (API to live URL):** 15 files. Deployed to production. Working.
-
-The success rate went from ~66% to effectively 100% across our test runs.
-
-## Why It Worked
-
-The key insight: a good rules file (CLAUDE.md) replaces multiple validation layers. Instead of building systems to catch and fix AI mistakes, we wrote clear instructions that prevent the mistakes in the first place.
-
-Less code. Fewer services. Better results.""",
+Your software costs should be predictable, not a variable that scales against you. We charge for the platform, not the people.""",
             "author": "Luis Manalac",
-            "category": "engineering",
-            "tags": json.dumps(["pipeline", "claude", "cc-worker", "architecture"]),
+            "category": "business",
+            "tags": json.dumps(["pricing", "saas", "business-model", "growth"]),
             "published": True,
             "published_at": datetime(2026, 2, 20, 14, 0, 0),
-            "read_time_minutes": 5,
+            "read_time_minutes": 4,
         },
     ]
     for data in posts:
