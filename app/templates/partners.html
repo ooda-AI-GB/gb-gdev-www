@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gigabox Partners — Start Earning Today</title>
+    <meta name="description" content="Earn $4,800 per deal introducing businesses to Gigabox. No interview. No experience required. Start today.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0a0a0a;
+            --bg-alt: #0f0f0f;
+            --bg-card: #161616;
+            --text: #fafafa;
+            --text-muted: #a3a3a3;
+            --gold: #d4a853;
+            --gold-dim: #b8922e;
+            --green: #34d399;
+            --orange: #f97316;
+            --border: rgba(255,255,255,0.06);
+            --border-hover: rgba(212,168,83,0.3);
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+        h1, h2, h3, h4 { font-family: 'JetBrains Mono', monospace; font-weight: 600; line-height: 1.2; }
+
+        /* ── Lang Bar ── */
+        .lang-bar {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+            background: rgba(10,10,10,0.95); backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border); padding: 10px 0;
+        }
+        .lang-bar-inner {
+            max-width: 1200px; margin: 0 auto; padding: 0 24px;
+            display: flex; justify-content: space-between; align-items: center;
+        }
+        .lang-logo {
+            font-family: 'JetBrains Mono', monospace; font-weight: 700;
+            font-size: 1.1rem; color: var(--text); text-decoration: none;
+            letter-spacing: 0.05em;
+        }
+        .lang-selector { display: flex; gap: 4px; flex-wrap: wrap; }
+        .lang-btn {
+            background: transparent; border: 1px solid var(--border);
+            color: var(--text-muted); padding: 4px 10px; border-radius: 4px;
+            cursor: pointer; font-size: 0.7rem; font-family: 'DM Sans', sans-serif;
+            transition: all 0.3s;
+        }
+        .lang-btn:hover, .lang-btn.active {
+            border-color: var(--gold); color: var(--gold);
+            background: rgba(212,168,83,0.08);
+        }
+
+        /* ── Hero ── */
+        .hero {
+            min-height: 100vh; display: flex; align-items: center; justify-content: center;
+            text-align: center; padding: 100px 24px 80px; position: relative; overflow: hidden;
+        }
+        .hero::before {
+            content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
+            background: radial-gradient(ellipse at 30% 50%, rgba(212,168,83,0.04) 0%, transparent 50%),
+                        radial-gradient(ellipse at 70% 30%, rgba(52,211,153,0.03) 0%, transparent 50%);
+            animation: drift 20s ease-in-out infinite alternate;
+        }
+        @keyframes drift { from { transform: translate(0,0); } to { transform: translate(-30px,20px); } }
+        .hero-content { position: relative; z-index: 1; max-width: 800px; }
+        .hero-badge {
+            display: inline-block; padding: 6px 16px; border: 1px solid var(--gold-dim);
+            border-radius: 100px; font-size: 0.8rem; color: var(--gold);
+            font-family: 'JetBrains Mono', monospace;
+            letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 32px;
+        }
+        .hero h1 { font-size: clamp(2.2rem, 5.5vw, 3.8rem); font-weight: 700; margin-bottom: 24px; }
+        .hero h1 .gold { color: var(--gold); }
+        .hero-sub { font-size: 1.15rem; color: var(--text-muted); max-width: 600px; margin: 0 auto 16px; }
+        .hero-proof { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 40px; }
+        .hero-proof a { color: var(--gold); text-decoration: underline; }
+        .hero-cta { display: inline-flex; gap: 16px; flex-wrap: wrap; justify-content: center; }
+        .btn-gold {
+            background: var(--gold); color: var(--bg); padding: 14px 32px; border-radius: 6px;
+            font-weight: 700; font-size: 0.95rem; text-decoration: none; border: none;
+            cursor: pointer; font-family: 'DM Sans', sans-serif; transition: all 0.3s;
+            display: inline-block;
+        }
+        .btn-gold:hover { background: var(--gold-dim); transform: translateY(-2px); box-shadow: 0 8px 30px rgba(212,168,83,0.2); }
+        .btn-outline {
+            background: transparent; color: var(--text); padding: 14px 32px; border-radius: 6px;
+            font-weight: 500; font-size: 0.95rem; text-decoration: none;
+            border: 1px solid var(--border); transition: all 0.3s; display: inline-block;
+        }
+        .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+
+        /* ── Sections ── */
+        .section { max-width: 1200px; margin: 0 auto; padding: 100px 24px; }
+        .section-alt { background: var(--bg-alt); }
+        .section-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase;
+            color: var(--gold); margin-bottom: 16px;
+        }
+        .section-title { font-size: clamp(1.8rem, 3.5vw, 2.5rem); margin-bottom: 48px; max-width: 650px; }
+
+        /* ── What You Need ── */
+        .checklist { max-width: 600px; }
+        .check-row { display: flex; align-items: center; gap: 16px; padding: 14px 0; border-bottom: 1px solid var(--border); font-size: 1rem; }
+        .check-row:last-child { border-bottom: none; }
+        .check-yes { color: var(--green); font-size: 1.2rem; min-width: 28px; }
+        .check-no { color: #ef4444; font-size: 1.2rem; min-width: 28px; }
+        .check-row span:last-child { color: var(--text-muted); }
+        .check-row.yes span:last-child { color: var(--text); }
+
+        /* ── Steps ── */
+        .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; }
+        .step {
+            background: var(--bg-card); border: 1px solid var(--border);
+            border-radius: 12px; padding: 36px 28px; position: relative; transition: all 0.4s;
+        }
+        .step:hover { border-color: var(--border-hover); transform: translateY(-4px); }
+        .step-number {
+            font-family: 'JetBrains Mono', monospace; font-size: 3rem;
+            color: rgba(212,168,83,0.12); position: absolute; top: 16px; right: 24px;
+        }
+        .step h3 { font-size: 1.1rem; margin-bottom: 10px; }
+        .step p { color: var(--text-muted); font-size: 0.9rem; line-height: 1.7; }
+
+        /* ── Earnings ── */
+        .earnings-wrap { background: var(--bg-alt); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+        .earnings-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
+        @media (max-width: 768px) { .earnings-grid { grid-template-columns: 1fr; gap: 40px; } }
+        .earn-table { width: 100%; border-collapse: collapse; }
+        .earn-table th {
+            text-align: left; padding: 12px 16px; font-size: 0.7rem; font-family: 'JetBrains Mono', monospace;
+            text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted);
+            border-bottom: 1px solid var(--border);
+        }
+        .earn-table td { padding: 16px; border-bottom: 1px solid var(--border); font-size: 0.95rem; }
+        .earn-table tr:last-child td { border-bottom: none; font-weight: 700; color: var(--gold); font-size: 1.1rem; }
+        .highlight-num { font-family: 'JetBrains Mono', monospace; font-size: clamp(3rem, 6vw, 4.5rem); color: var(--gold); font-weight: 700; line-height: 1; margin-bottom: 8px; }
+        .highlight-label { color: var(--text-muted); font-size: 0.9rem; }
+
+        /* ── Currency Impact ── */
+        .currency-table { width: 100%; border-collapse: collapse; margin-top: 32px; }
+        .currency-table th {
+            text-align: left; padding: 12px 16px; font-size: 0.7rem; font-family: 'JetBrains Mono', monospace;
+            text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted);
+            border-bottom: 1px solid var(--border);
+        }
+        .currency-table td { padding: 14px 16px; border-bottom: 1px solid var(--border); font-size: 0.9rem; }
+        .currency-table tr:last-child td { border-bottom: none; }
+        .currency-flag { font-size: 1.2rem; margin-right: 8px; }
+        .currency-amount { font-family: 'JetBrains Mono', monospace; color: var(--gold); font-weight: 600; }
+        .currency-impact { color: var(--green); font-weight: 600; font-size: 0.8rem; }
+
+        /* ── Products ── */
+        .product-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; }
+        .product-card {
+            background: var(--bg-card); border: 1px solid var(--border);
+            border-radius: 10px; padding: 24px 20px; transition: all 0.3s;
+        }
+        .product-card:hover { border-color: var(--border-hover); }
+        .product-card h4 { font-size: 0.9rem; margin-bottom: 4px; }
+        .product-kills { color: var(--green); font-size: 0.75rem; font-weight: 500; }
+        .product-card p { color: var(--text-muted); font-size: 0.8rem; margin-top: 8px; }
+
+        /* ── Why Different ── */
+        .reasons { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; }
+        .reason {
+            background: var(--bg-card); border: 1px solid var(--border);
+            border-radius: 12px; padding: 32px 24px; transition: all 0.3s;
+        }
+        .reason:hover { border-color: var(--border-hover); }
+        .reason h3 { font-size: 1rem; margin-bottom: 8px; }
+        .reason p { color: var(--text-muted); font-size: 0.85rem; line-height: 1.7; }
+
+        /* ── Trust ── */
+        .trust-bar {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 24px; text-align: center; padding: 60px 0;
+        }
+        .trust-item .trust-num { font-family: 'JetBrains Mono', monospace; font-size: 1.8rem; font-weight: 700; color: var(--gold); }
+        .trust-item .trust-label { font-size: 0.8rem; color: var(--text-muted); margin-top: 4px; }
+
+        /* ── Markets ── */
+        .markets { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 16px; }
+        .market-card {
+            background: var(--bg-card); border: 1px solid var(--border);
+            border-radius: 10px; padding: 20px 16px; text-align: center; transition: all 0.3s;
+        }
+        .market-card:hover { border-color: var(--border-hover); transform: translateY(-2px); }
+        .market-flag { font-size: 1.8rem; margin-bottom: 8px; }
+        .market-name { font-weight: 700; font-size: 0.85rem; margin-bottom: 4px; }
+        .market-lang { color: var(--text-muted); font-size: 0.7rem; }
+
+        /* ── FAQ ── */
+        .faq-list { max-width: 700px; }
+        .faq-item { border-bottom: 1px solid var(--border); padding: 20px 0; }
+        .faq-q {
+            font-weight: 600; font-size: 0.95rem; cursor: pointer;
+            display: flex; justify-content: space-between; align-items: center; gap: 16px;
+        }
+        .faq-q::after { content: '+'; color: var(--gold); font-size: 1.3rem; font-weight: 300; flex-shrink: 0; }
+        .faq-item.open .faq-q::after { content: '\2212'; }
+        .faq-a { color: var(--text-muted); font-size: 0.9rem; line-height: 1.7; max-height: 0; overflow: hidden; transition: max-height 0.3s ease; padding-top: 0; }
+        .faq-item.open .faq-a { max-height: 300px; padding-top: 12px; }
+
+        /* ── Form ── */
+        .form-container { max-width: 560px; margin: 0 auto; }
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+        @media (max-width: 500px) { .form-row { grid-template-columns: 1fr; } }
+        .form-group { margin-bottom: 20px; }
+        .form-group label { display: block; font-size: 0.8rem; font-weight: 500; margin-bottom: 6px; color: var(--text-muted); }
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%; padding: 12px 16px; background: var(--bg-card);
+            border: 1px solid var(--border); border-radius: 6px;
+            color: var(--text); font-family: 'DM Sans', sans-serif; font-size: 0.9rem;
+            transition: border-color 0.3s;
+        }
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+            outline: none; border-color: var(--gold);
+        }
+        .form-group select {
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg width='10' height='6' viewBox='0 0 10 6' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%23a3a3a3' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");
+            background-repeat: no-repeat; background-position: right 16px center;
+        }
+        .form-group select option { background: var(--bg-card); }
+        .form-success {
+            display: none; text-align: center; padding: 40px 24px;
+            background: var(--bg-card); border: 1px solid var(--green);
+            border-radius: 12px;
+        }
+        .form-success.show { display: block; }
+        .form-success h3 { color: var(--green); margin-bottom: 12px; }
+        .form-success p { color: var(--text-muted); }
+
+        /* ── Footer ── */
+        .footer {
+            text-align: center; padding: 40px 24px;
+            border-top: 1px solid var(--border);
+            color: var(--text-muted); font-size: 0.8rem;
+        }
+        .footer a { color: var(--gold); text-decoration: none; }
+
+        /* ── Responsive ── */
+        @media (max-width: 768px) {
+            .hero { padding-top: 80px; min-height: auto; padding-bottom: 60px; }
+            .section { padding: 60px 24px; }
+            .hero h1 { font-size: 2rem; }
+            .lang-selector { gap: 3px; }
+            .lang-btn { padding: 3px 8px; font-size: 0.65rem; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Language Bar -->
+<nav class="lang-bar">
+    <div class="lang-bar-inner">
+        <a href="https://www.gigabox.app" class="lang-logo">GIGABOX</a>
+        <div class="lang-selector" id="langSelector">
+            <button class="lang-btn active" data-lang="en">EN</button>
+            <button class="lang-btn" data-lang="ms">BM</button>
+            <button class="lang-btn" data-lang="zh">CN</button>
+            <button class="lang-btn" data-lang="id">ID</button>
+            <button class="lang-btn" data-lang="tl">TL</button>
+            <button class="lang-btn" data-lang="th">TH</button>
+            <button class="lang-btn" data-lang="vi">VI</button>
+            <button class="lang-btn" data-lang="ja">JA</button>
+            <button class="lang-btn" data-lang="ko">KO</button>
+            <button class="lang-btn" data-lang="es">ES</button>
+        </div>
+    </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+    <div class="hero-content">
+        <div class="hero-badge" data-i18n="hero_badge">Start Earning Today</div>
+        <h1 data-i18n="hero_title">Make <span class="gold">$4,800 per deal</span> showing businesses a better way to run software</h1>
+        <p class="hero-sub" data-i18n="hero_sub">No interview. No experience required. No cost to join. Just show the product on your phone and earn 20% commission on every deal you close.</p>
+        <p class="hero-proof" data-i18n="hero_proof">The product is live right now. <a href="https://www.gigabox.app" target="_blank">Go see it at gigabox.app</a></p>
+        <div class="hero-cta">
+            <a href="#apply" class="btn-gold" data-i18n="cta_start">Start Earning</a>
+            <a href="#how" class="btn-outline" data-i18n="cta_learn">See the Math</a>
+        </div>
+    </div>
+</section>
+
+<!-- What You Need -->
+<section class="section-alt">
+    <div class="section">
+        <div class="section-label" data-i18n="need_label">What You Need</div>
+        <h2 class="section-title" data-i18n="need_title">You already have everything</h2>
+        <div class="checklist">
+            <div class="check-row yes"><span class="check-yes">&#10003;</span><span data-i18n="need_1">A smartphone (you're reading this on one)</span></div>
+            <div class="check-row yes"><span class="check-yes">&#10003;</span><span data-i18n="need_2">People you know who run businesses</span></div>
+            <div class="check-row yes"><span class="check-yes">&#10003;</span><span data-i18n="need_3">Ability to show a website on your phone</span></div>
+            <div class="check-row yes"><span class="check-yes">&#10003;</span><span data-i18n="need_4">30 minutes to learn the product</span></div>
+            <div class="check-row"><span class="check-no">&#10007;</span><span data-i18n="need_5">No office needed</span></div>
+            <div class="check-row"><span class="check-no">&#10007;</span><span data-i18n="need_6">No inventory</span></div>
+            <div class="check-row"><span class="check-no">&#10007;</span><span data-i18n="need_7">No experience required</span></div>
+            <div class="check-row"><span class="check-no">&#10007;</span><span data-i18n="need_8">No money upfront</span></div>
+            <div class="check-row"><span class="check-no">&#10007;</span><span data-i18n="need_9">No interview</span></div>
+        </div>
+    </div>
+</section>
+
+<!-- How It Works -->
+<section class="section" id="how">
+    <div class="section-label" data-i18n="how_label">How It Works</div>
+    <h2 class="section-title" data-i18n="how_title">Three steps. Start today, not in two weeks.</h2>
+    <div class="steps">
+        <div class="step">
+            <div class="step-number">01</div>
+            <h3 data-i18n="step1_title">Find a Business</h3>
+            <p data-i18n="step1_desc">Any company paying for CRM, help desk, analytics, or other SaaS tools. They're already in your network, your community, your contacts. You know them.</p>
+        </div>
+        <div class="step">
+            <div class="step-number">02</div>
+            <h3 data-i18n="step2_title">Show the Platform</h3>
+            <p data-i18n="step2_desc">Open gigabox.app on your phone. The apps are live right now. Show them how one platform replaces their entire software stack for $2,000/month. The product sells itself.</p>
+        </div>
+        <div class="step">
+            <div class="step-number">03</div>
+            <h3 data-i18n="step3_title">Get Paid</h3>
+            <p data-i18n="step3_desc">When they sign up, you earn 20% of the first year. That's $4,800 per annual deal. We handle setup, deployment, and support. You make the introduction, we do the rest.</p>
+        </div>
+    </div>
+</section>
+
+<!-- Earnings Calculator -->
+<div class="earnings-wrap">
+    <div class="section" style="padding-top:80px;padding-bottom:80px;">
+        <div class="section-label" data-i18n="earn_label">The Math</div>
+        <h2 class="section-title" data-i18n="earn_title">Simple math, real money</h2>
+        <div class="earnings-grid">
+            <div>
+                <table class="earn-table">
+                    <thead>
+                        <tr>
+                            <th data-i18n="earn_col_deals">Deals / Year</th>
+                            <th data-i18n="earn_col_earn">You Earn</th>
+                            <th data-i18n="earn_col_monthly">Per Month</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>1</td><td>$4,800</td><td>$400</td></tr>
+                        <tr><td>3</td><td>$14,400</td><td>$1,200</td></tr>
+                        <tr><td>5</td><td>$24,000</td><td>$2,000</td></tr>
+                        <tr><td>10</td><td>$48,000</td><td>$4,000</td></tr>
+                        <tr><td>20</td><td>$96,000</td><td>$8,000</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <div style="text-align:center;">
+                <div class="highlight-num">$4,800</div>
+                <div class="highlight-label" data-i18n="earn_per_deal">per annual deal (20% of $24,000)</div>
+                <div style="margin-top:24px;color:var(--text-muted);font-size:0.85rem;" data-i18n="earn_note">Paid in USD. No caps. No quotas. No minimum sales. Earn at your own pace.</div>
+            </div>
+        </div>
+
+        <!-- Local Currency Impact -->
+        <div style="margin-top:60px;">
+            <h3 style="font-size:1.1rem;margin-bottom:8px;" data-i18n="currency_title">What one deal means in your country</h3>
+            <p style="color:var(--text-muted);font-size:0.85rem;margin-bottom:24px;" data-i18n="currency_sub">$4,800 USD in local currency</p>
+            <table class="currency-table">
+                <thead>
+                    <tr>
+                        <th data-i18n="currency_col_country">Country</th>
+                        <th data-i18n="currency_col_deal">One Deal =</th>
+                        <th data-i18n="currency_col_avg">Avg Monthly Salary</th>
+                        <th data-i18n="currency_col_impact">Impact</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span class="currency-flag">&#x1F1F5;&#x1F1ED;</span>Philippines</td>
+                        <td class="currency-amount">&#8369;270,000</td>
+                        <td>~&#8369;25,000</td>
+                        <td class="currency-impact">= 10 months salary</td>
+                    </tr>
+                    <tr>
+                        <td><span class="currency-flag">&#x1F1EE;&#x1F1E9;</span>Indonesia</td>
+                        <td class="currency-amount">Rp76,000,000</td>
+                        <td>~Rp5,000,000</td>
+                        <td class="currency-impact">= 15 months salary</td>
+                    </tr>
+                    <tr>
+                        <td><span class="currency-flag">&#x1F1FB;&#x1F1F3;</span>Vietnam</td>
+                        <td class="currency-amount">&#8363;120,000,000</td>
+                        <td>~&#8363;10,000,000</td>
+                        <td class="currency-impact">= 12 months salary</td>
+                    </tr>
+                    <tr>
+                        <td><span class="currency-flag">&#x1F1F9;&#x1F1ED;</span>Thailand</td>
+                        <td class="currency-amount">&#3647;170,000</td>
+                        <td>~&#3647;15,000</td>
+                        <td class="currency-impact">= 11 months salary</td>
+                    </tr>
+                    <tr>
+                        <td><span class="currency-flag">&#x1F1F2;&#x1F1FE;</span>Malaysia</td>
+                        <td class="currency-amount">RM22,000</td>
+                        <td>~RM3,000</td>
+                        <td class="currency-impact">= 7 months salary</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- What You're Selling -->
+<section class="section">
+    <div class="section-label" data-i18n="product_label">What You're Selling</div>
+    <h2 class="section-title" data-i18n="product_title">A complete business platform that replaces everything</h2>
+    <div class="product-grid">
+        <div class="product-card"><h4>CRM Pro</h4><div class="product-kills">Replaces Salesforce, HubSpot</div><p>Contacts, deals, pipeline</p></div>
+        <div class="product-card"><h4>Help Desk Pro</h4><div class="product-kills">Replaces Zendesk, Intercom</div><p>Tickets, knowledge base, SLA</p></div>
+        <div class="product-card"><h4>Analytics Pro</h4><div class="product-kills">Replaces Tableau, Looker</div><p>Dashboards, queries, insights</p></div>
+        <div class="product-card"><h4>Social Pro</h4><div class="product-kills">Replaces Hootsuite, Buffer</div><p>Scheduling, content, metrics</p></div>
+        <div class="product-card"><h4>Finance Pro</h4><div class="product-kills">Replaces QuickBooks, Xero</div><p>Expenses, budgets, tax reports</p></div>
+        <div class="product-card"><h4>Legal Pro</h4><div class="product-kills">Replaces Ironclad, DocuSign</div><p>Contracts, compliance, tracking</p></div>
+        <div class="product-card"><h4>Jobs Pro</h4><div class="product-kills">Replaces Lever, Greenhouse</div><p>Hiring, applicants, pipeline</p></div>
+        <div class="product-card"><h4>Productivity Pro</h4><div class="product-kills">Replaces Asana, Monday</div><p>Tasks, projects, milestones</p></div>
+        <div class="product-card"><h4>Research Pro</h4><div class="product-kills">Replaces Notion, Confluence</div><p>Knowledge, sources, insights</p></div>
+        <div class="product-card"><h4>Search Pro</h4><div class="product-kills">Replaces Algolia, Elastic</div><p>Unified search across all apps</p></div>
+        <div class="product-card"><h4>Cloud Pro</h4><div class="product-kills">Replaces Datadog, CloudHealth</div><p>Infrastructure, costs, health</p></div>
+        <div class="product-card"><h4>Watchtower</h4><div class="product-kills">Platform Control Room</div><p>Fleet monitoring, status</p></div>
+        <div class="product-card"><h4>Uno AI Assistant</h4><div class="product-kills">Works Across All Apps</div><p>Ask in plain English, get results</p></div>
+    </div>
+    <div style="text-align:center;margin-top:40px;">
+        <p style="color:var(--gold);font-size:1.1rem;font-weight:700;" data-i18n="product_price">All apps. $2,000/month. Unlimited users. No per-seat fees.</p>
+        <p style="color:var(--text-muted);font-size:0.85rem;margin-top:8px;" data-i18n="product_annual">Annual: $24,000/year — includes source code and self-hosting rights</p>
+        <a href="https://www.gigabox.app/apps" target="_blank" style="display:inline-block;margin-top:16px;color:var(--gold);font-size:0.85rem;text-decoration:underline;" data-i18n="product_verify">See all apps running live at gigabox.app &rarr;</a>
+    </div>
+</section>
+
+<!-- Why This Is Different -->
+<section class="section-alt">
+    <div class="section">
+        <div class="section-label" data-i18n="why_label">Why This Is Different</div>
+        <h2 class="section-title" data-i18n="why_title">This isn't a job. It's not a side hustle. It's your business.</h2>
+        <div class="reasons">
+            <div class="reason">
+                <h3 data-i18n="why1_title">No Interview Required</h3>
+                <p data-i18n="why1_desc">No resume. No cover letter. No waiting. While everyone else is applying for jobs and hearing nothing back, you're already earning. Start today.</p>
+            </div>
+            <div class="reason">
+                <h3 data-i18n="why2_title">Your Skills Already Qualify You</h3>
+                <p data-i18n="why2_desc">You know people. You understand business. That's all you need. No certifications, no training programs, no new skills to learn. Your network is your qualification.</p>
+            </div>
+            <div class="reason">
+                <h3 data-i18n="why3_title">The Product Is Live</h3>
+                <p data-i18n="why3_desc">This isn't vaporware. Go to gigabox.app right now. Click the apps. See real data. This is a real platform serving real clients. You're selling something that exists.</p>
+            </div>
+            <div class="reason">
+                <h3 data-i18n="why4_title">Paid in USD</h3>
+                <p data-i18n="why4_desc">Commissions paid in US dollars. If you're in Southeast Asia, one deal could equal months of local salary. The currency arbitrage is built in.</p>
+            </div>
+            <div class="reason">
+                <h3 data-i18n="why5_title">We Handle Everything</h3>
+                <p data-i18n="why5_desc">Setup, deployment, migration, support. All handled. You make the introduction, have the conversation, close the deal. We do everything else.</p>
+            </div>
+            <div class="reason">
+                <h3 data-i18n="why6_title">Sell From Your Phone</h3>
+                <p data-i18n="why6_desc">No office. No inventory. No equipment. Open gigabox.app on your phone, show the live demo, close the deal over coffee. Your phone is your entire sales toolkit.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Trust Signals -->
+<div class="section-alt" style="border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
+    <div class="section" style="padding:0;">
+        <div class="trust-bar">
+            <div class="trust-item">
+                <div class="trust-num">13+</div>
+                <div class="trust-label" data-i18n="trust_apps">Live production apps</div>
+            </div>
+            <div class="trust-item">
+                <div class="trust-num">99.9%</div>
+                <div class="trust-label" data-i18n="trust_uptime">Platform uptime</div>
+            </div>
+            <div class="trust-item">
+                <div class="trust-num">Google Cloud</div>
+                <div class="trust-label" data-i18n="trust_infra">Enterprise infrastructure</div>
+            </div>
+            <div class="trust-item">
+                <div class="trust-num">Global</div>
+                <div class="trust-label" data-i18n="trust_clients">Serving clients worldwide</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Target Markets -->
+<section class="section">
+    <div class="section-label" data-i18n="markets_label">Markets</div>
+    <h2 class="section-title" data-i18n="markets_title">We're growing across Asia-Pacific and beyond</h2>
+    <div class="markets">
+        <div class="market-card"><div class="market-flag">&#x1F1F2;&#x1F1FE;</div><div class="market-name">Malaysia</div><div class="market-lang">EN / BM / CN</div></div>
+        <div class="market-card"><div class="market-flag">&#x1F1EE;&#x1F1E9;</div><div class="market-name">Indonesia</div><div class="market-lang">ID / EN</div></div>
+        <div class="market-card"><div class="market-flag">&#x1F1F5;&#x1F1ED;</div><div class="market-name">Philippines</div><div class="market-lang">TL / EN</div></div>
+        <div class="market-card"><div class="market-flag">&#x1F1F9;&#x1F1ED;</div><div class="market-name">Thailand</div><div class="market-lang">TH / EN</div></div>
+        <div class="market-card"><div class="market-flag">&#x1F1FB;&#x1F1F3;</div><div class="market-name">Vietnam</div><div class="market-lang">VI / EN</div></div>
+        <div class="market-card"><div class="market-flag">&#x1F1EF;&#x1F1F5;</div><div class="market-name">Japan</div><div class="market-lang">JA / EN</div></div>
+        <div class="market-card"><div class="market-flag">&#x1F1F0;&#x1F1F7;</div><div class="market-name">South Korea</div><div class="market-lang">KO / EN</div></div>
+        <div class="market-card"><div class="market-flag">&#x1F1EA;&#x1F1F8;</div><div class="market-name">Spain / LATAM</div><div class="market-lang">ES / EN</div></div>
+    </div>
+</section>
+
+<!-- FAQ -->
+<section class="section-alt">
+    <div class="section">
+        <div class="section-label" data-i18n="faq_label">FAQ</div>
+        <h2 class="section-title" data-i18n="faq_title">You're skeptical. Good. Read this.</h2>
+        <div class="faq-list">
+            <div class="faq-item open">
+                <div class="faq-q" data-i18n="faq1_q">Is this real? How do I know it's not a scam?</div>
+                <div class="faq-a" data-i18n="faq1_a">Go to gigabox.app right now. Click every app. They're live, running, serving real data. Try the CRM, the Help Desk, the Analytics dashboard. This isn't a landing page with promises. It's a live product you can verify in 30 seconds.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-q" data-i18n="faq2_q">Do I need technical skills?</div>
+                <div class="faq-a" data-i18n="faq2_a">No. If you can show a website on your phone and explain "this replaces 13 software subscriptions for $2,000/month," you have everything you need. We handle all the technical work.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-q" data-i18n="faq3_q">How and when do I get paid?</div>
+                <div class="faq-a" data-i18n="faq3_a">USD wire transfer or PayPal within 30 days of client payment. You earn 20% of the first year: $4,800 per annual deal, or $400/month for monthly clients. No caps, no quotas.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-q" data-i18n="faq4_q">What does it cost to join?</div>
+                <div class="faq-a" data-i18n="faq4_a">Nothing. Zero. No fees, no buy-in, no minimum sales, no monthly costs. You earn when clients pay. If you never close a deal, you owe nothing. There is no catch.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-q" data-i18n="faq5_q">What if the client needs help after signing up?</div>
+                <div class="faq-a" data-i18n="faq5_a">We handle everything: setup, data migration, training, ongoing support. Your job is the introduction and the relationship. We do the rest.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-q" data-i18n="faq6_q">What kind of businesses should I approach?</div>
+                <div class="faq-a" data-i18n="faq6_a">Companies with 10-100 employees paying for multiple software tools: CRM, help desk, project management, analytics, accounting. They're spending $5,000-15,000/month on software they barely use. Gigabox replaces all of it for $2,000.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-q" data-i18n="faq7_q">Can I do this part-time?</div>
+                <div class="faq-a" data-i18n="faq7_a">Yes. There are no hours, no schedule, no reporting. Close one deal in a month, close ten. Work mornings, weekends, whenever you have conversations. This is your business, on your terms.</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Application Form -->
+<section class="section" id="apply">
+    <div class="section-label" data-i18n="apply_label">Get Started</div>
+    <h2 class="section-title" data-i18n="apply_title">Start earning today. Free. No interview.</h2>
+    <div class="form-container">
+        <form id="partnerForm">
+            <div class="form-row">
+                <div class="form-group">
+                    <label data-i18n="form_name">Full Name *</label>
+                    <input type="text" id="formName" required placeholder="Your name">
+                </div>
+                <div class="form-group">
+                    <label data-i18n="form_email">Email *</label>
+                    <input type="email" id="formEmail" required placeholder="you@email.com">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label data-i18n="form_phone">WhatsApp / Phone</label>
+                    <input type="tel" id="formPhone" placeholder="+60 12 345 6789">
+                </div>
+                <div class="form-group">
+                    <label data-i18n="form_country">Country *</label>
+                    <select id="formCountry" required>
+                        <option value="">Select...</option>
+                        <option value="MY">Malaysia</option>
+                        <option value="ID">Indonesia</option>
+                        <option value="PH">Philippines</option>
+                        <option value="TH">Thailand</option>
+                        <option value="VN">Vietnam</option>
+                        <option value="JP">Japan</option>
+                        <option value="KR">South Korea</option>
+                        <option value="ES">Spain</option>
+                        <option value="US">United States</option>
+                        <option value="OTHER">Other</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label data-i18n="form_background">Your Background</label>
+                <select id="formBackground">
+                    <option value="">Select...</option>
+                    <option value="sales">Sales / Business Development</option>
+                    <option value="tech">Technology / IT</option>
+                    <option value="consulting">Consulting / Advisory</option>
+                    <option value="marketing">Marketing / Digital</option>
+                    <option value="accounting">Accounting / Finance</option>
+                    <option value="freelance">Freelancer / Gig Worker</option>
+                    <option value="student">Student / Recent Graduate</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label data-i18n="form_network">Tell us about your network (optional)</label>
+                <textarea id="formNetwork" rows="3" placeholder="What industries do you work with? How many businesses do you know?"></textarea>
+            </div>
+            <button type="submit" class="btn-gold" style="width:100%;text-align:center;margin-top:8px;font-size:1rem;padding:16px;" data-i18n="form_submit">Start Now &mdash; Free</button>
+            <p style="text-align:center;color:var(--text-muted);font-size:0.8rem;margin-top:12px;" data-i18n="form_note">No interview. No approval wait. We'll send you everything you need to get started.</p>
+        </form>
+        <div class="form-success" id="formSuccess">
+            <h3 data-i18n="form_success_title">You're in.</h3>
+            <p data-i18n="form_success_msg">Check your email for your partner kit and next steps. Welcome to Gigabox.</p>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+    <p><a href="https://www.gigabox.app">gigabox.app</a> &middot; Complete Software Stack for Growing Businesses</p>
+    <p style="margin-top:8px;">Questions? <a href="mailto:info@gigabox.ai">info@gigabox.ai</a></p>
+    <p style="margin-top:8px;">&copy; 2026 Gigabox. All rights reserved.</p>
+</footer>
+
+<script>
+// ── i18n ──
+var T = {
+en: {
+    hero_badge:"Start Earning Today",
+    hero_title:'Make <span class="gold">$4,800 per deal</span> showing businesses a better way to run software',
+    hero_sub:"No interview. No experience required. No cost to join. Just show the product on your phone and earn 20% commission on every deal you close.",
+    hero_proof:'The product is live right now. <a href="https://www.gigabox.app" target="_blank">Go see it at gigabox.app</a>',
+    cta_start:"Start Earning",cta_learn:"See the Math",
+    need_label:"What You Need",need_title:"You already have everything",
+    need_1:"A smartphone (you're reading this on one)",need_2:"People you know who run businesses",need_3:"Ability to show a website on your phone",need_4:"30 minutes to learn the product",
+    need_5:"No office needed",need_6:"No inventory",need_7:"No experience required",need_8:"No money upfront",need_9:"No interview",
+    how_label:"How It Works",how_title:"Three steps. Start today, not in two weeks.",
+    step1_title:"Find a Business",step1_desc:"Any company paying for CRM, help desk, analytics, or other SaaS tools. They're already in your network, your community, your contacts. You know them.",
+    step2_title:"Show the Platform",step2_desc:"Open gigabox.app on your phone. The apps are live right now. Show them how one platform replaces their entire software stack for $2,000/month. The product sells itself.",
+    step3_title:"Get Paid",step3_desc:"When they sign up, you earn 20% of the first year. That's $4,800 per annual deal. We handle setup, deployment, and support. You make the introduction, we do the rest.",
+    earn_label:"The Math",earn_title:"Simple math, real money",earn_col_deals:"Deals / Year",earn_col_earn:"You Earn",earn_col_monthly:"Per Month",
+    earn_per_deal:"per annual deal (20% of $24,000)",earn_note:"Paid in USD. No caps. No quotas. No minimum sales. Earn at your own pace.",
+    currency_title:"What one deal means in your country",currency_sub:"$4,800 USD in local currency",
+    currency_col_country:"Country",currency_col_deal:"One Deal =",currency_col_avg:"Avg Monthly Salary",currency_col_impact:"Impact",
+    product_label:"What You're Selling",product_title:"A complete business platform that replaces everything",
+    product_price:"All apps. $2,000/month. Unlimited users. No per-seat fees.",product_annual:"Annual: $24,000/year \u2014 includes source code and self-hosting rights",
+    product_verify:"See all apps running live at gigabox.app \u2192",
+    why_label:"Why This Is Different",why_title:"This isn't a job. It's not a side hustle. It's your business.",
+    why1_title:"No Interview Required",why1_desc:"No resume. No cover letter. No waiting. While everyone else is applying for jobs and hearing nothing back, you're already earning. Start today.",
+    why2_title:"Your Skills Already Qualify You",why2_desc:"You know people. You understand business. That's all you need. No certifications, no training programs. Your network is your qualification.",
+    why3_title:"The Product Is Live",why3_desc:"This isn't vaporware. Go to gigabox.app right now. Click the apps. See real data. This is a real platform serving real clients.",
+    why4_title:"Paid in USD",why4_desc:"Commissions paid in US dollars. If you're in Southeast Asia, one deal could equal months of local salary. The currency arbitrage is built in.",
+    why5_title:"We Handle Everything",why5_desc:"Setup, deployment, migration, support. All handled. You make the introduction, have the conversation, close the deal. We do everything else.",
+    why6_title:"Sell From Your Phone",why6_desc:"No office. No inventory. No equipment. Open gigabox.app on your phone, show the live demo, close the deal over coffee.",
+    trust_apps:"Live production apps",trust_uptime:"Platform uptime",trust_infra:"Enterprise infrastructure",trust_clients:"Serving clients worldwide",
+    markets_label:"Markets",markets_title:"We're growing across Asia-Pacific and beyond",
+    faq_label:"FAQ",faq_title:"You're skeptical. Good. Read this.",
+    faq1_q:"Is this real? How do I know it's not a scam?",faq1_a:'Go to gigabox.app right now. Click every app. They\'re live, running, serving real data. This isn\'t a landing page with promises. It\'s a live product you can verify in 30 seconds.',
+    faq2_q:"Do I need technical skills?",faq2_a:'No. If you can show a website on your phone and explain "this replaces 13 software subscriptions for $2,000/month," you have everything you need.',
+    faq3_q:"How and when do I get paid?",faq3_a:"USD wire transfer or PayPal within 30 days of client payment. 20% of the first year: $4,800 per annual deal, or $400/month for monthly clients.",
+    faq4_q:"What does it cost to join?",faq4_a:"Nothing. Zero. No fees, no buy-in, no minimum sales, no monthly costs. You earn when clients pay. There is no catch.",
+    faq5_q:"What if the client needs help after signing up?",faq5_a:"We handle everything: setup, data migration, training, ongoing support. Your job is the introduction and the relationship.",
+    faq6_q:"What kind of businesses should I approach?",faq6_a:"Companies with 10-100 employees paying for multiple software tools. They're spending $5,000-15,000/month on software they barely use. Gigabox replaces all of it for $2,000.",
+    faq7_q:"Can I do this part-time?",faq7_a:"Yes. No hours, no schedule, no reporting. Close one deal or ten. Work mornings, weekends, whenever. This is your business, on your terms.",
+    apply_label:"Get Started",apply_title:"Start earning today. Free. No interview.",
+    form_name:"Full Name *",form_email:"Email *",form_phone:"WhatsApp / Phone",form_country:"Country *",form_background:"Your Background",form_network:"Tell us about your network (optional)",
+    form_submit:"Start Now \u2014 Free",form_note:"No interview. No approval wait. We'll send you everything you need to get started.",
+    form_success_title:"You're in.",form_success_msg:"Check your email for your partner kit and next steps. Welcome to Gigabox."
+},
+ms: {
+    hero_badge:"Mula Menjana Hari Ini",
+    hero_title:'Jana <span class="gold">$4,800 setiap perjanjian</span> dengan menunjukkan perniagaan cara lebih baik',
+    hero_sub:"Tiada temuduga. Tiada pengalaman diperlukan. Tiada kos untuk menyertai. Tunjukkan produk di telefon anda dan dapatkan 20% komisen.",
+    hero_proof:'Produk sudah aktif sekarang. <a href="https://www.gigabox.app" target="_blank">Lihat di gigabox.app</a>',
+    cta_start:"Mula Menjana",cta_learn:"Lihat Pengiraan",
+    need_label:"Apa Yang Anda Perlukan",need_title:"Anda sudah ada semuanya",
+    need_1:"Telefon pintar (anda sedang membaca ini)",need_2:"Kenalan yang menjalankan perniagaan",need_3:"Boleh menunjukkan laman web di telefon",need_4:"30 minit untuk belajar produk",
+    need_5:"Tiada pejabat diperlukan",need_6:"Tiada inventori",need_7:"Tiada pengalaman diperlukan",need_8:"Tiada modal diperlukan",need_9:"Tiada temuduga",
+    how_label:"Cara Ia Berfungsi",how_title:"Tiga langkah. Mula hari ini, bukan dua minggu lagi.",
+    step1_title:"Cari Perniagaan",step1_desc:"Mana-mana syarikat yang membayar CRM, meja bantuan, analitik. Mereka ada dalam rangkaian anda. Anda sudah kenal mereka.",
+    step2_title:"Tunjukkan Platform",step2_desc:"Buka gigabox.app di telefon. Aplikasi sudah aktif sekarang. Satu platform menggantikan semua perisian mereka dengan $2,000/bulan.",
+    step3_title:"Dapatkan Bayaran",step3_desc:"Apabila mereka mendaftar, anda dapat 20% tahun pertama \u2014 $4,800 setiap perjanjian tahunan. Kami uruskan semua yang lain.",
+    earn_label:"Pengiraan",earn_title:"Matematik mudah, wang sebenar",earn_col_deals:"Perjanjian / Tahun",earn_col_earn:"Anda Jana",earn_col_monthly:"Sebulan",
+    earn_per_deal:"setiap perjanjian tahunan (20% daripada $24,000)",
+    product_label:"Apa Yang Anda Jual",product_title:"Platform perniagaan lengkap yang menggantikan semua",
+    product_price:"Semua aplikasi. $2,000/bulan. Pengguna tanpa had.",
+    why_label:"Kenapa Ini Berbeza",why_title:"Ini bukan kerja. Ini perniagaan anda.",
+    why1_title:"Tiada Temuduga",why1_desc:"Tiada resume. Tiada menunggu. Sementara orang lain memohon kerja, anda sudah menjana.",
+    faq_label:"Soalan Lazim",faq_title:"Anda ragu-ragu. Bagus. Baca ini.",
+    apply_label:"Mula",apply_title:"Mula menjana hari ini. Percuma. Tiada temuduga.",
+    form_submit:"Mula Sekarang \u2014 Percuma",form_note:"Tiada temuduga. Kami hantar semua yang anda perlukan.",
+    form_success_title:"Anda sudah masuk.",form_success_msg:"Semak emel anda untuk kit rakan kongsi. Selamat datang ke Gigabox."
+},
+zh: {
+    hero_badge:"\u4eca\u5929\u5f00\u59cb\u8d5a\u94b1",
+    hero_title:'\u6bcf\u7b14\u4ea4\u6613\u8d5a<span class="gold">$4,800</span>\uff0c\u5e2e\u52a9\u4f01\u4e1a\u66f4\u6362\u8f6f\u4ef6',
+    hero_sub:"\u65e0\u9700\u9762\u8bd5\u3002\u65e0\u9700\u7ecf\u9a8c\u3002\u65e0\u9700\u8d39\u7528\u3002\u5728\u624b\u673a\u4e0a\u5c55\u793a\u4ea7\u54c1\uff0c\u6bcf\u7b14\u4ea4\u6613\u8d5a\u53d620%\u4f63\u91d1\u3002",
+    hero_proof:'\u4ea7\u54c1\u73b0\u5728\u5c31\u662f\u6d3b\u7684\u3002<a href="https://www.gigabox.app" target="_blank">\u53bb gigabox.app \u770b\u770b</a>',
+    cta_start:"\u5f00\u59cb\u8d5a\u94b1",cta_learn:"\u770b\u7b97\u6cd5",
+    need_label:"\u4f60\u9700\u8981\u4ec0\u4e48",need_title:"\u4f60\u5df2\u7ecf\u62e5\u6709\u4e00\u5207",
+    need_1:"\u4e00\u90e8\u667a\u80fd\u624b\u673a\uff08\u4f60\u6b63\u5728\u7528\u5b83\u9605\u8bfb\uff09",need_2:"\u8ba4\u8bc6\u7ecf\u8425\u4f01\u4e1a\u7684\u4eba",need_3:"\u80fd\u5728\u624b\u673a\u4e0a\u5c55\u793a\u7f51\u7ad9",need_4:"30\u5206\u949f\u5b66\u4e60\u4ea7\u54c1",
+    need_5:"\u4e0d\u9700\u8981\u529e\u516c\u5ba4",need_6:"\u4e0d\u9700\u8981\u5e93\u5b58",need_7:"\u4e0d\u9700\u8981\u7ecf\u9a8c",need_8:"\u4e0d\u9700\u8981\u524d\u671f\u8d44\u91d1",need_9:"\u4e0d\u9700\u8981\u9762\u8bd5",
+    how_label:"\u5982\u4f55\u8fd0\u4f5c",how_title:"\u4e09\u4e2a\u6b65\u9aa4\u3002\u4eca\u5929\u5f00\u59cb\uff0c\u4e0d\u662f\u4e24\u5468\u540e\u3002",
+    step1_title:"\u627e\u5230\u4f01\u4e1a",step1_desc:"\u4efb\u4f55\u4e3aCRM\u3001\u5ba2\u670d\u3001\u5206\u6790\u6216\u5176\u4ed6SaaS\u5de5\u5177\u4ed8\u8d39\u7684\u516c\u53f8\u3002\u4ed6\u4eec\u5c31\u5728\u4f60\u7684\u4eba\u8109\u4e2d\u3002",
+    step2_title:"\u5c55\u793a\u5e73\u53f0",step2_desc:"\u5728\u624b\u673a\u4e0a\u6253\u5f00gigabox.app\u3002\u5e94\u7528\u73b0\u5728\u5c31\u662f\u6d3b\u7684\u3002\u5c55\u793a\u4e00\u4e2a\u5e73\u53f0\u5982\u4f55\u66ff\u4ee3\u4ed6\u4eec\u6240\u6709\u8f6f\u4ef6\uff0c\u6bcf\u6708\u4ec5$2,000\u3002",
+    step3_title:"\u83b7\u5f97\u62a5\u916c",step3_desc:"\u4ed6\u4eec\u6ce8\u518c\u540e\uff0c\u4f60\u83b7\u5f97\u7b2c\u4e00\u5e7420%\u3002\u6bcf\u7b14\u5e74\u5ea6\u4ea4\u6613$4,800\u3002\u6211\u4eec\u5904\u7406\u5176\u4ed6\u4e00\u5207\u3002",
+    earn_label:"\u7b97\u6cd5",earn_title:"\u7b80\u5355\u7684\u6570\u5b66\uff0c\u771f\u5b9e\u7684\u94b1",
+    earn_col_deals:"\u4ea4\u6613 / \u5e74",earn_col_earn:"\u4f60\u8d5a",earn_col_monthly:"\u6bcf\u6708",
+    product_label:"\u4f60\u5728\u5356\u4ec0\u4e48",product_title:"\u4e00\u4e2a\u5b8c\u6574\u7684\u4f01\u4e1a\u5e73\u53f0\uff0c\u66ff\u4ee3\u4e00\u5207",
+    product_price:"\u6240\u6709\u5e94\u7528\u3002$2,000/\u6708\u3002\u65e0\u9650\u7528\u6237\u3002",
+    faq_label:"\u5e38\u89c1\u95ee\u9898",faq_title:"\u4f60\u6709\u7591\u8651\u3002\u5f88\u597d\u3002\u8bfb\u8fd9\u4e2a\u3002",
+    apply_label:"\u5f00\u59cb",apply_title:"\u4eca\u5929\u5f00\u59cb\u8d5a\u94b1\u3002\u514d\u8d39\u3002\u65e0\u9700\u9762\u8bd5\u3002",
+    form_submit:"\u7acb\u5373\u5f00\u59cb \u2014 \u514d\u8d39",form_note:"\u65e0\u9700\u9762\u8bd5\u3002\u6211\u4eec\u4f1a\u53d1\u9001\u4f60\u9700\u8981\u7684\u4e00\u5207\u3002",
+    form_success_title:"\u4f60\u5df2\u52a0\u5165\u3002",form_success_msg:"\u68c0\u67e5\u4f60\u7684\u90ae\u7bb1\u83b7\u53d6\u5408\u4f5c\u4f19\u4f34\u5957\u4ef6\u3002\u6b22\u8fce\u52a0\u5165Gigabox\u3002"
+},
+id: {
+    hero_badge:"Mulai Hasilkan Hari Ini",
+    hero_title:'Hasilkan <span class="gold">$4.800 per deal</span> dengan menunjukkan bisnis cara yang lebih baik',
+    hero_sub:"Tanpa wawancara. Tanpa pengalaman. Tanpa biaya. Tunjukkan produk di HP Anda dan dapatkan komisi 20% untuk setiap deal.",
+    hero_proof:'Produknya sudah live sekarang. <a href="https://www.gigabox.app" target="_blank">Lihat di gigabox.app</a>',
+    cta_start:"Mulai Menghasilkan",cta_learn:"Lihat Perhitungannya",
+    need_label:"Yang Anda Butuhkan",need_title:"Anda sudah punya semuanya",
+    need_1:"Smartphone (Anda sedang membaca ini)",need_2:"Kenalan yang menjalankan bisnis",need_3:"Bisa menunjukkan website di HP",need_4:"30 menit untuk mempelajari produk",
+    need_5:"Tidak perlu kantor",need_6:"Tidak perlu inventaris",need_7:"Tidak perlu pengalaman",need_8:"Tidak perlu modal",need_9:"Tidak perlu wawancara",
+    how_label:"Cara Kerjanya",how_title:"Tiga langkah. Mulai hari ini, bukan dua minggu lagi.",
+    step1_title:"Temukan Bisnis",step1_desc:"Perusahaan mana pun yang membayar CRM, help desk, analytics, atau alat SaaS lainnya. Mereka ada di jaringan Anda.",
+    step2_title:"Tunjukkan Platform",step2_desc:"Buka gigabox.app di HP Anda. Aplikasinya sudah live. Satu platform menggantikan semua software mereka seharga $2.000/bulan.",
+    step3_title:"Terima Bayaran",step3_desc:"Ketika mereka mendaftar, Anda mendapat 20% tahun pertama \u2014 $4.800 per deal tahunan. Kami yang mengurus semuanya.",
+    earn_label:"Perhitungan",earn_title:"Matematika sederhana, uang nyata",
+    earn_col_deals:"Deal / Tahun",earn_col_earn:"Anda Hasilkan",earn_col_monthly:"Per Bulan",
+    product_label:"Yang Anda Jual",product_title:"Platform bisnis lengkap yang menggantikan semuanya",
+    product_price:"Semua aplikasi. $2.000/bulan. Pengguna tak terbatas.",
+    faq_label:"FAQ",faq_title:"Anda skeptis. Bagus. Baca ini.",
+    apply_label:"Mulai",apply_title:"Mulai hasilkan hari ini. Gratis. Tanpa wawancara.",
+    form_submit:"Mulai Sekarang \u2014 Gratis",form_note:"Tanpa wawancara. Kami kirimkan semua yang Anda butuhkan.",
+    form_success_title:"Anda sudah masuk.",form_success_msg:"Cek email Anda untuk kit partner. Selamat datang di Gigabox."
+},
+tl: {
+    hero_badge:"Magsimulang Kumita Ngayon",
+    hero_title:'Kumita ng <span class="gold">$4,800 bawat deal</span> sa pagpapakita ng mas magandang software sa mga negosyo',
+    hero_sub:"Walang interview. Walang experience na kailangan. Walang bayad. Ipakita lang ang produkto sa phone mo at kumita ng 20% commission.",
+    hero_proof:'Live na ang produkto ngayon. <a href="https://www.gigabox.app" target="_blank">Tingnan sa gigabox.app</a>',
+    cta_start:"Magsimulang Kumita",cta_learn:"Tingnan ang Math",
+    need_label:"Ang Kailangan Mo",need_title:"Meron ka na ng lahat",
+    need_1:"Smartphone (binabasa mo ito ngayon)",need_2:"Mga kakilala na may-ari ng negosyo",need_3:"Maipakita ang website sa phone",need_4:"30 minuto para matutunan ang produkto",
+    need_5:"Hindi kailangan ng opisina",need_6:"Walang inventory",need_7:"Walang experience na kailangan",need_8:"Walang puhunan",need_9:"Walang interview",
+    how_label:"Paano Ito Gumagana",how_title:"Tatlong hakbang. Magsimula ngayon, hindi sa dalawang linggo.",
+    step1_title:"Humanap ng Negosyo",step1_desc:"Kahit anong kumpanya na nagbabayad ng CRM, help desk, analytics. Nasa network mo na sila.",
+    step2_title:"Ipakita ang Platform",step2_desc:"Buksan ang gigabox.app sa phone mo. Live na ang mga app. Isang platform ang papalit sa lahat ng software nila sa $2,000/buwan.",
+    step3_title:"Kumita",step3_desc:"Kapag nag-sign up sila, kumikita ka ng 20% ng unang taon \u2014 $4,800 bawat annual deal. Kami ang bahala sa lahat.",
+    earn_label:"Ang Math",earn_title:"Simpleng math, totoong pera",
+    earn_col_deals:"Deals / Taon",earn_col_earn:"Kita Mo",earn_col_monthly:"Bawat Buwan",
+    product_label:"Ang Binebenta Mo",product_title:"Kumpletong business platform na papalit sa lahat",
+    product_price:"Lahat ng apps. $2,000/buwan. Walang limitasyon sa users.",
+    faq_label:"FAQ",faq_title:"Nagdududa ka. Mabuti. Basahin ito.",
+    apply_label:"Magsimula",apply_title:"Magsimulang kumita ngayon. Libre. Walang interview.",
+    form_submit:"Magsimula Ngayon \u2014 Libre",form_note:"Walang interview. Ipapadala namin lahat ng kailangan mo.",
+    form_success_title:"Pasok ka na.",form_success_msg:"Tingnan ang email mo para sa partner kit. Welcome sa Gigabox."
+},
+th: {
+    hero_badge:"\u0e40\u0e23\u0e34\u0e48\u0e21\u0e2a\u0e23\u0e49\u0e32\u0e07\u0e23\u0e32\u0e22\u0e44\u0e14\u0e49\u0e27\u0e31\u0e19\u0e19\u0e35\u0e49",
+    hero_title:'\u0e23\u0e31\u0e1a <span class="gold">$4,800 \u0e15\u0e48\u0e2d\u0e14\u0e35\u0e25</span> \u0e42\u0e14\u0e22\u0e41\u0e19\u0e30\u0e19\u0e33\u0e0b\u0e2d\u0e1f\u0e15\u0e4c\u0e41\u0e27\u0e23\u0e4c\u0e17\u0e35\u0e48\u0e14\u0e35\u0e01\u0e27\u0e48\u0e32\u0e43\u0e2b\u0e49\u0e18\u0e38\u0e23\u0e01\u0e34\u0e08',
+    hero_sub:"\u0e44\u0e21\u0e48\u0e15\u0e49\u0e2d\u0e07\u0e2a\u0e31\u0e21\u0e20\u0e32\u0e29\u0e13\u0e4c \u0e44\u0e21\u0e48\u0e15\u0e49\u0e2d\u0e07\u0e21\u0e35\u0e1b\u0e23\u0e30\u0e2a\u0e1a\u0e01\u0e32\u0e23\u0e13\u0e4c \u0e44\u0e21\u0e48\u0e21\u0e35\u0e04\u0e48\u0e32\u0e43\u0e0a\u0e49\u0e08\u0e48\u0e32\u0e22 \u0e41\u0e2a\u0e14\u0e07\u0e2a\u0e34\u0e19\u0e04\u0e49\u0e32\u0e1a\u0e19\u0e42\u0e17\u0e23\u0e28\u0e31\u0e1e\u0e17\u0e4c\u0e41\u0e25\u0e30\u0e23\u0e31\u0e1a\u0e04\u0e48\u0e32\u0e04\u0e2d\u0e21\u0e21\u0e34\u0e0a\u0e0a\u0e31\u0e48\u0e19 20%",
+    cta_start:"\u0e40\u0e23\u0e34\u0e48\u0e21\u0e2a\u0e23\u0e49\u0e32\u0e07\u0e23\u0e32\u0e22\u0e44\u0e14\u0e49",cta_learn:"\u0e14\u0e39\u0e15\u0e31\u0e27\u0e40\u0e25\u0e02",
+    need_label:"\u0e2a\u0e34\u0e48\u0e07\u0e17\u0e35\u0e48\u0e04\u0e38\u0e13\u0e15\u0e49\u0e2d\u0e07\u0e01\u0e32\u0e23",need_title:"\u0e04\u0e38\u0e13\u0e21\u0e35\u0e17\u0e38\u0e01\u0e2d\u0e22\u0e48\u0e32\u0e07\u0e41\u0e25\u0e49\u0e27",
+    how_label:"\u0e27\u0e34\u0e18\u0e35\u0e01\u0e32\u0e23\u0e17\u0e33\u0e07\u0e32\u0e19",how_title:"\u0e2a\u0e32\u0e21\u0e02\u0e31\u0e49\u0e19\u0e15\u0e2d\u0e19 \u0e40\u0e23\u0e34\u0e48\u0e21\u0e27\u0e31\u0e19\u0e19\u0e35\u0e49 \u0e44\u0e21\u0e48\u0e43\u0e0a\u0e48\u0e2a\u0e2d\u0e07\u0e2a\u0e31\u0e1b\u0e14\u0e32\u0e2b\u0e4c",
+    step1_title:"\u0e2b\u0e32\u0e18\u0e38\u0e23\u0e01\u0e34\u0e08",step2_title:"\u0e41\u0e2a\u0e14\u0e07\u0e41\u0e1e\u0e25\u0e15\u0e1f\u0e2d\u0e23\u0e4c\u0e21",step3_title:"\u0e23\u0e31\u0e1a\u0e40\u0e07\u0e34\u0e19",
+    apply_label:"\u0e40\u0e23\u0e34\u0e48\u0e21\u0e15\u0e49\u0e19",apply_title:"\u0e40\u0e23\u0e34\u0e48\u0e21\u0e2a\u0e23\u0e49\u0e32\u0e07\u0e23\u0e32\u0e22\u0e44\u0e14\u0e49\u0e27\u0e31\u0e19\u0e19\u0e35\u0e49 \u0e1f\u0e23\u0e35 \u0e44\u0e21\u0e48\u0e15\u0e49\u0e2d\u0e07\u0e2a\u0e31\u0e21\u0e20\u0e32\u0e29\u0e13\u0e4c",
+    form_submit:"\u0e40\u0e23\u0e34\u0e48\u0e21\u0e40\u0e25\u0e22 \u2014 \u0e1f\u0e23\u0e35"
+},
+vi: {
+    hero_badge:"B\u1eaft \u0110\u1ea7u Ki\u1ebfm Ti\u1ec1n H\u00f4m Nay",
+    hero_title:'Ki\u1ebfm <span class="gold">$4.800 m\u1ed7i deal</span> b\u1eb1ng c\u00e1ch gi\u1edbi thi\u1ec7u ph\u1ea7n m\u1ec1m t\u1ed1t h\u01a1n cho doanh nghi\u1ec7p',
+    hero_sub:"Kh\u00f4ng ph\u1ecfng v\u1ea5n. Kh\u00f4ng c\u1ea7n kinh nghi\u1ec7m. Kh\u00f4ng m\u1ea5t ph\u00ed. Ch\u1ec9 c\u1ea7n tr\u00ecnh b\u00e0y s\u1ea3n ph\u1ea9m tr\u00ean \u0111i\u1ec7n tho\u1ea1i v\u00e0 nh\u1eadn hoa h\u1ed3ng 20%.",
+    cta_start:"B\u1eaft \u0110\u1ea7u Ki\u1ebfm Ti\u1ec1n",cta_learn:"Xem T\u00ednh To\u00e1n",
+    need_label:"B\u1ea1n C\u1ea7n G\u00ec",need_title:"B\u1ea1n \u0111\u00e3 c\u00f3 m\u1ecdi th\u1ee9",
+    how_label:"C\u00e1ch Ho\u1ea1t \u0110\u1ed9ng",how_title:"Ba b\u01b0\u1edbc. B\u1eaft \u0111\u1ea7u h\u00f4m nay, kh\u00f4ng ph\u1ea3i hai tu\u1ea7n n\u1eefa.",
+    step1_title:"T\u00ecm Doanh Nghi\u1ec7p",step2_title:"Tr\u00ecnh B\u00e0y N\u1ec1n T\u1ea3ng",step3_title:"Nh\u1eadn Ti\u1ec1n",
+    apply_label:"B\u1eaft \u0110\u1ea7u",apply_title:"B\u1eaft \u0111\u1ea7u ki\u1ebfm ti\u1ec1n h\u00f4m nay. Mi\u1ec5n ph\u00ed. Kh\u00f4ng ph\u1ecfng v\u1ea5n.",
+    form_submit:"B\u1eaft \u0110\u1ea7u Ngay \u2014 Mi\u1ec5n Ph\u00ed"
+},
+ja: {
+    hero_badge:"\u4eca\u65e5\u304b\u3089\u53ce\u5165\u3092\u5f97\u308b",
+    hero_title:'1\u4ef6\u3042\u305f\u308a<span class="gold">$4,800\u3092\u7a3c\u3050</span> \u2014 \u4f01\u696d\u306b\u3088\u308a\u826f\u3044\u30bd\u30d5\u30c8\u30a6\u30a7\u30a2\u3092\u7d39\u4ecb',
+    hero_sub:"\u9762\u63a5\u4e0d\u8981\u3002\u7d4c\u9a13\u4e0d\u8981\u3002\u8cbb\u7528\u306a\u3057\u3002\u30b9\u30de\u30db\u3067\u88fd\u54c1\u3092\u898b\u305b\u3066\u300120%\u306e\u30b3\u30df\u30c3\u30b7\u30e7\u30f3\u3092\u7372\u5f97\u3002",
+    cta_start:"\u53ce\u5165\u3092\u59cb\u3081\u308b",cta_learn:"\u8a08\u7b97\u3092\u898b\u308b",
+    need_label:"\u5fc5\u8981\u306a\u3082\u306e",need_title:"\u3059\u3079\u3066\u63c3\u3063\u3066\u3044\u307e\u3059",
+    how_label:"\u4ed5\u7d44\u307f",how_title:"3\u30b9\u30c6\u30c3\u30d7\u30022\u9031\u9593\u5f8c\u3067\u306f\u306a\u304f\u4eca\u65e5\u304b\u3089\u3002",
+    step1_title:"\u4f01\u696d\u3092\u898b\u3064\u3051\u308b",step2_title:"\u30d7\u30e9\u30c3\u30c8\u30d5\u30a9\u30fc\u30e0\u3092\u898b\u305b\u308b",step3_title:"\u5831\u916c\u3092\u5f97\u308b",
+    apply_label:"\u59cb\u3081\u308b",apply_title:"\u4eca\u65e5\u304b\u3089\u53ce\u5165\u3092\u5f97\u308b\u3002\u7121\u6599\u3002\u9762\u63a5\u306a\u3057\u3002",
+    form_submit:"\u4eca\u3059\u3050\u59cb\u3081\u308b \u2014 \u7121\u6599"
+},
+ko: {
+    hero_badge:"\uc624\ub298\ubd80\ud130 \uc218\uc775 \ucc3d\ucd9c",
+    hero_title:'\uac74\ub2f9 <span class="gold">$4,800 \uc218\uc775</span> \u2014 \uae30\uc5c5\uc5d0 \ub354 \ub098\uc740 \uc18c\ud504\ud2b8\uc6e8\uc5b4\ub97c \uc18c\uac1c',
+    hero_sub:"\uba74\uc811 \uc5c6\uc74c. \uacbd\ud5d8 \ubd88\ud544\uc694. \ube44\uc6a9 \uc5c6\uc74c. \ud578\ub4dc\ud3f0\uc73c\ub85c \uc81c\ud488\uc744 \ubcf4\uc5ec\uc8fc\uace0 20% \ucee4\ubbf8\uc158\uc744 \ubc1b\uc73c\uc138\uc694.",
+    cta_start:"\uc218\uc775 \uc2dc\uc791",cta_learn:"\uacc4\uc0b0 \ubcf4\uae30",
+    need_label:"\ud544\uc694\ud55c \uac83",need_title:"\uc774\ubbf8 \ubaa8\ub4e0 \uac83\uc744 \uac00\uc9c0\uace0 \uc788\uc2b5\ub2c8\ub2e4",
+    how_label:"\uc791\ub3d9 \ubc29\uc2dd",how_title:"3\ub2e8\uacc4. 2\uc8fc \ud6c4\uac00 \uc544\ub2cc \uc624\ub298\ubd80\ud130.",
+    step1_title:"\uae30\uc5c5 \ucc3e\uae30",step2_title:"\ud50c\ub7ab\ud3fc \ubcf4\uc5ec\uc8fc\uae30",step3_title:"\ub300\uae08 \ubc1b\uae30",
+    apply_label:"\uc2dc\uc791",apply_title:"\uc624\ub298\ubd80\ud130 \uc218\uc775. \ubb34\ub8cc. \uba74\uc811 \uc5c6\uc74c.",
+    form_submit:"\uc9c0\uae08 \uc2dc\uc791 \u2014 \ubb34\ub8cc"
+},
+es: {
+    hero_badge:"Empieza a Ganar Hoy",
+    hero_title:'Gana <span class="gold">$4,800 por acuerdo</span> mostrando a empresas una mejor forma de gestionar software',
+    hero_sub:"Sin entrevista. Sin experiencia requerida. Sin costo. Muestra el producto en tu tel\u00e9fono y gana 20% de comisi\u00f3n en cada venta.",
+    hero_proof:'El producto est\u00e1 en vivo ahora. <a href="https://www.gigabox.app" target="_blank">V\u00e9alo en gigabox.app</a>',
+    cta_start:"Empieza a Ganar",cta_learn:"Ver los N\u00fameros",
+    need_label:"Lo Que Necesitas",need_title:"Ya tienes todo lo que necesitas",
+    need_1:"Un smartphone (est\u00e1s leyendo esto en uno)",need_2:"Conocidos que manejan negocios",need_3:"Poder mostrar un sitio web en tu tel\u00e9fono",need_4:"30 minutos para aprender el producto",
+    need_5:"No necesitas oficina",need_6:"No necesitas inventario",need_7:"No necesitas experiencia",need_8:"No necesitas dinero por adelantado",need_9:"No necesitas entrevista",
+    how_label:"C\u00f3mo Funciona",how_title:"Tres pasos. Empieza hoy, no en dos semanas.",
+    step1_title:"Encuentra un Negocio",step1_desc:"Cualquier empresa que pague por CRM, mesa de ayuda, anal\u00edticas u otras herramientas SaaS. Ya est\u00e1n en tu red, tu comunidad, tus contactos.",
+    step2_title:"Muestra la Plataforma",step2_desc:"Abre gigabox.app en tu tel\u00e9fono. Las apps est\u00e1n en vivo. Una plataforma reemplaza todo su software por $2,000/mes. El producto se vende solo.",
+    step3_title:"Recibe tu Pago",step3_desc:"Cuando se registran, ganas 20% del primer a\u00f1o \u2014 $4,800 por acuerdo anual. Nosotros nos encargamos de todo lo dem\u00e1s.",
+    earn_label:"Los N\u00fameros",earn_title:"Matem\u00e1ticas simples, dinero real",
+    earn_col_deals:"Acuerdos / A\u00f1o",earn_col_earn:"T\u00fa Ganas",earn_col_monthly:"Por Mes",
+    earn_per_deal:"por acuerdo anual (20% de $24,000)",
+    product_label:"Lo Que Vendes",product_title:"Una plataforma empresarial completa que reemplaza todo",
+    product_price:"Todas las apps. $2,000/mes. Usuarios ilimitados. Sin cargos por usuario.",
+    product_annual:"Anual: $24,000/a\u00f1o \u2014 incluye c\u00f3digo fuente y derechos de auto-alojamiento",
+    why_label:"Por Qu\u00e9 Es Diferente",why_title:"Esto no es un trabajo. No es un extra. Es tu negocio.",
+    why1_title:"Sin Entrevista",why1_desc:"Sin CV. Sin carta de presentaci\u00f3n. Sin esperar. Mientras otros aplican a trabajos, t\u00fa ya est\u00e1s ganando.",
+    faq_label:"Preguntas Frecuentes",faq_title:"Eres esc\u00e9ptico. Bien. Lee esto.",
+    apply_label:"Empezar",apply_title:"Empieza a ganar hoy. Gratis. Sin entrevista.",
+    form_submit:"Empezar Ahora \u2014 Gratis",form_note:"Sin entrevista. Te enviaremos todo lo que necesitas.",
+    form_success_title:"Est\u00e1s dentro.",form_success_msg:"Revisa tu email para tu kit de socio. Bienvenido a Gigabox."
+}
+};
+
+var currentLang = 'en';
+
+document.querySelectorAll('.lang-btn').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+        setLang(this.getAttribute('data-lang'));
+    });
+});
+
+function setLang(lang) {
+    currentLang = lang;
+    var t = T[lang] || T['en'];
+    var fallback = T['en'];
+    document.querySelectorAll('.lang-btn').forEach(function(b) { b.classList.remove('active'); });
+    var active = document.querySelector('.lang-btn[data-lang="'+lang+'"]');
+    if (active) active.classList.add('active');
+    document.querySelectorAll('[data-i18n]').forEach(function(el) {
+        var key = el.getAttribute('data-i18n');
+        var val = t[key] || fallback[key];
+        if (val && el.tagName !== 'INPUT' && el.tagName !== 'TEXTAREA' && el.tagName !== 'SELECT') {
+            el.innerHTML = val;
+        }
+    });
+    document.documentElement.lang = lang;
+}
+
+document.querySelectorAll('.faq-q').forEach(function(q) {
+    q.addEventListener('click', function() {
+        this.parentElement.classList.toggle('open');
+    });
+});
+
+document.getElementById('partnerForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    var name = document.getElementById('formName').value;
+    var email = document.getElementById('formEmail').value;
+    var phone = document.getElementById('formPhone').value;
+    var country = document.getElementById('formCountry').value;
+    var background = document.getElementById('formBackground').value;
+    var network = document.getElementById('formNetwork').value;
+    var subject = 'Partner Application \u2014 ' + name + ' (' + country + ')';
+    var body = 'Name: ' + name + '\nEmail: ' + email + '\nPhone/WhatsApp: ' + phone + '\nCountry: ' + country + '\nBackground: ' + background + '\nNetwork: ' + network;
+    window.location.href = 'mailto:info@gigabox.ai?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+    document.getElementById('partnerForm').style.display = 'none';
+    document.getElementById('formSuccess').classList.add('show');
+});
+</script>
+
+</body>
+</html>

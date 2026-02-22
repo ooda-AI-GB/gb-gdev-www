@@ -179,3 +179,8 @@ def contact_submit(
 @router.get("/pricing")
 def pricing_page(request: Request):
     return templates.TemplateResponse("pricing.html", {"request": request})
+
+
+@router.get("/partners")
+def partners_page(request: Request):
+    return templates.TemplateResponse("partners.html", {"request": request})
