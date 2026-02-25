@@ -25,7 +25,7 @@ def _seed_apps(db):
             "tagline": "Your entire sales pipeline, AI-powered",
             "description": "Full-featured CRM with contact management, deal pipeline, activity tracking, and AI-powered competitive intelligence. Built to replace HubSpot and Salesforce at a fraction of the cost.",
             "category": "productivity",
-            "live_url": "https://gdev-crm.gigabox.app",
+            "live_url": None,
             "features": json.dumps(["Contact management with pipeline stages", "Deal tracking and forecasting", "Activity logging and notes", "AI-powered competitive intelligence", "Full REST API", "Custom dashboards"]),
             "replaces": "HubSpot, Salesforce",
             "evolution_count": 16,
