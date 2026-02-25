@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Uno to Slack</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: #0a0a0a;
+            color: #fafafa;
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+        .card {
+            max-width: 480px;
+            width: 100%;
+            background: #141414;
+            border: 1px solid #262626;
+            border-radius: 12px;
+            padding: 3rem 2.5rem;
+            text-align: center;
+        }
+        .logo {
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 700;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: #a3a3a3;
+            margin-bottom: 1.5rem;
+        }
+        h1 {
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 600;
+            font-size: 2rem;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+        .accent { color: #f97316; }
+        .desc {
+            color: #a3a3a3;
+            font-size: 0.95rem;
+            margin-bottom: 2rem;
+            line-height: 1.7;
+        }
+        .btn {
+            display: inline-block;
+            background: #f97316;
+            color: #0a0a0a;
+            font-family: 'DM Sans', sans-serif;
+            font-weight: 600;
+            font-size: 1rem;
+            padding: 0.875rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: background 0.2s, transform 0.1s;
+        }
+        .btn:hover { background: #fb923c; transform: translateY(-1px); }
+        .btn:active { transform: translateY(0); }
+        .note {
+            margin-top: 1.5rem;
+            font-size: 0.8rem;
+            color: #525252;
+        }
+        .error {
+            background: #1c0a0a;
+            border: 1px solid #7f1d1d;
+            color: #fca5a5;
+            padding: 0.75rem 1rem;
+            border-radius: 8px;
+            font-size: 0.875rem;
+            margin-bottom: 1.5rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="logo">Gigabox</div>
+        <h1>Add <span class="accent">Uno</span> to Slack</h1>
+        {% if error %}
+        <div class="error">Installation failed. Please try again or contact hello@gigabox.ai.</div>
+        {% endif %}
+        <p class="desc">
+            Uno is your AI assistant. It connects to your apps, classifies your data,
+            answers your questions, and operates your tools &mdash; all from Slack.
+        </p>
+        <a href="https://uno.gigabox.ai/slack/install" class="btn">Add to Slack &rarr;</a>
+        <p class="note">You'll be redirected to Slack to authorize access.</p>
+    </div>
+</body>
+</html>

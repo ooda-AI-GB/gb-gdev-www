@@ -184,3 +184,13 @@ def pricing_page(request: Request):
 @router.get("/partners")
 def partners_page(request: Request):
     return templates.TemplateResponse("partners.html", {"request": request})
+
+
+@router.get("/invite")
+def invite_page(request: Request, error: str = None):
+    return templates.TemplateResponse("invite.html", {"request": request, "error": error})
+
+
+@router.get("/invite/success")
+def invite_success(request: Request):
+    return templates.TemplateResponse("invite_success.html", {"request": request})
